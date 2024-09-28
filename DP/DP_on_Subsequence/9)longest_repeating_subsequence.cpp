@@ -3,7 +3,7 @@ https://www.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1
 Solution 1-:
 Steps-:
 1)Same as the lcs 
-2) just added in if condition when i!=j. 
+2)just added in if condition when i!=j. 
 
 int LongestRepeatingSubsequence(string str){
 	    int m=str.length();

@@ -27,7 +27,7 @@ Steps-:
 
 Solve()
 1)if my col==n means out of bound 
-  ans.push_back(board) -> we go our first answer.
+  ans.push_back(board) -> we got our first answer.
 2)right now we are at some column -> now we have n rows where we want to fit. 
   this part will be ask from (isSafe) function.
 
@@ -43,7 +43,7 @@ Case2-:
 if we are checked all 4 rows and we are not able to fit it at any row in that case we have to backtrack means 
 board[row][col] is not the correct options.
 make it board[row][col]='.'
-
+and go to previous cell.
 
 SO ON.....
 
@@ -55,7 +55,7 @@ here we can go 8 directions but we only have to ask from 3 direction because res
 3.     [row+1][col-1]
 
 note -:
-if any point if board[row][col]=='Q' is there means they attack each other means they are not safe.
+if any point if board[row][col]=='Q' there means they attack each other means they are not safe.
 return false.
 
 
@@ -125,3 +125,6 @@ vector<vector<string>> solveNQueens(int n) {
         solve(0,board,ans,n);
         return ans;
 }
+
+
+

@@ -66,7 +66,6 @@ public:
             else
             j--;
         }
-       
     }
     string shortestCommonSupersequence(string str1, string str2) {
         int n=str1.size();
