@@ -9,4 +9,4 @@ int maxProfit(std::vector<int>& prices) {
             }
         }
         return profit;
-    }
+}

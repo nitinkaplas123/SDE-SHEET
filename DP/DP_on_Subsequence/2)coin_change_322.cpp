@@ -5,7 +5,7 @@ o/p -> 2
 Solution 1-:
 Code-:
 int helper(vector<int> &coins, int M, int V)
-	{
+{
 	    if(M==0)
 	    {
 	        if(V==0) return 0;
@@ -15,15 +15,16 @@ int helper(vector<int> &coins, int M, int V)
 	    return min(1+helper(coins,M,V-coins[M-1]),helper(coins,M-1,V));
 	    else
 	    return helper(coins,M-1,V);
-	}
-	int minCoins(vector<int> &coins, int M, int V) 
-	{ 
+}
+
+int minCoins(vector<int> &coins, int M, int V) 
+{ 
 	    int res=helper(coins,M,V);
 	    if(res==1e9)
 	    return -1;
 	    else
 	    return res;
-	} 
+} 
 
 
 Solution 2-:

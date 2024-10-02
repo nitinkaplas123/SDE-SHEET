@@ -28,8 +28,8 @@ void topo(vector<vector<int>>& adj,int V,stack<int>&st)
 	    }
 }
 	
-	void reverse(vector<vector<int>>& adj,int V,vector<int>transpose[])
-	{
+void reverse(vector<vector<int>>& adj,int V,vector<int>transpose[])
+{
 	   for(int i=0;i<V;i++)
 	   {
 	     for(auto x:adj[i])
@@ -37,19 +37,20 @@ void topo(vector<vector<int>>& adj,int V,stack<int>&st)
 	      transpose[x].push_back(i);
 	     }
 	   }
-	}
+}
 	
-	void helper(vector<int>transpose[],int V,bool visited2[],int s)
-	{
+void helper(vector<int>transpose[],int V,bool visited2[],int s)
+{
 	    visited2[s]=true;
 	    for(auto x:transpose[s])
 	    {
 	        if(visited2[x]==false)
 	        helper(transpose,V,visited2,x);
 	    }   
-	}
-    int kosaraju(int V, vector<vector<int>>& adj)
-    {
+}
+
+int kosaraju(int V, vector<vector<int>>& adj)
+{
        stack<int>st;
        topo(adj,V,st);
        
@@ -80,4 +81,4 @@ void topo(vector<vector<int>>& adj,int V,stack<int>&st)
           }
        }
        return count;
-    }
+}

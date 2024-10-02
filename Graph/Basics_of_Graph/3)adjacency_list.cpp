@@ -39,7 +39,7 @@ Steps-:
 
 
 Code-: Time-> O(V+E)  Space->O(V+E)
- vector<vector<int>> printGraph(int V, vector<pair<int,int>>edges) {
+vector<vector<int>> printGraph(int V, vector<pair<int,int>>edges) {
         vector<vector<int>>adj(V);
         for(int i=0;i<edges.size();i++)
         {
@@ -49,4 +49,4 @@ Code-: Time-> O(V+E)  Space->O(V+E)
             adj[val2].push_back(val1);
         }
         return adj;
-    }
+}

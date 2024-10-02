@@ -2,7 +2,7 @@ https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-mat
 
 Note -:
 1) Its not working for -ve weight edges.
-2) path change when all extra weight to all the edges.
+2) path changes when all extra weight to all the edges.
 Code-:
 time complexity -> O(Elog(V)) E -> No. of edges. and V is the no. of vertex
 

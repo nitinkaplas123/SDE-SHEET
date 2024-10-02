@@ -31,7 +31,6 @@ int helper(vector<int>&nums,int sum,int n)
         return helper(nums,sum-nums[n-1],n-1) + helper(nums,sum,n-1);
         else
         return helper(nums,sum,n-1);
-
 }
 
 int perfectSum(vector<int>&nums,int sum)
