@@ -18,7 +18,6 @@ vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
        pq.push({0,S});
        while(pq.empty()==false)
        {
-           int dis=pq.top().first;
            int node=pq.top().second;
            pq.pop();
            

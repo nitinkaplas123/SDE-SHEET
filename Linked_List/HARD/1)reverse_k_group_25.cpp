@@ -1,6 +1,6 @@
 Solution -:
 
- here we have to reverse k group 
+here we have to reverse k group 
 but if we left with less number of nodes than k than no need to reverse it just return as it is.
 
 eg. [1,2,3,4,5,6,7,8]   k=3

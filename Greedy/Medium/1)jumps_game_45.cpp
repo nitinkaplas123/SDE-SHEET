@@ -18,4 +18,4 @@ int jump(vector<int>& nums) {
             }
         }
         return jumps;
-    }
+}

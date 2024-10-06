@@ -21,7 +21,7 @@ for eg.
 2)dist[0][1] -> 0->2 + 2->1 
 3)dist[0][1] -> 0->3 + 3->1
 4)dist[0][1] -> 0->4 + 4->1
-                i  k   k  j  j
+                i  k   k  j  
 
 can we say that 
 dist[i][j]=min(dist[i][j],dist[i][k]+dist[k][j]);

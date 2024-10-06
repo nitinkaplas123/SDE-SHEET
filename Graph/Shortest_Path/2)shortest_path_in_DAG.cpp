@@ -40,7 +40,8 @@ void dfs(vector<pair<int,int>> adj[],vector<int>&visited,stack<int>&st,int s)
 	    st.push(s);
 	    return ;
 }
-     vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
+
+vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
         vector<pair<int,int>> adj[N];
         for(int i=0;i<M;i++)
         {

@@ -1,3 +1,5 @@
+
+Code-:
 int maxProfit(std::vector<int>& prices) {
         int buy = prices[0];
         int profit = 0;

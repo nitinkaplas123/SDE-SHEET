@@ -1,8 +1,8 @@
 https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=find-pairs-with-given-sum-in-doubly-linked-list
 
 Steps-:
-1)curr1 at the starting of the linked list.
-2)curr2 at the ending of the linked list.
+1)curr1 at the starting of the doubly linked list.
+2)curr2 at the ending of the doubly linked list.
 
 Code-:
 vector<pair<int, int>> findPairsWithGivenSum(Node *head, int target)

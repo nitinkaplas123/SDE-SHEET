@@ -52,6 +52,6 @@ int findTargetSumWays(vector<int>& nums, int target) {
             sum+=nums[i];
         }
         if((sum+target)%2!=0) return 0;
-        int val=(sum+target)/2;
+        int val=(sum+target)/2; 
         return perfectSum(nums,val);
 }

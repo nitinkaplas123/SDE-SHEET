@@ -36,4 +36,4 @@ int findContentChildren(vector<int>& g, vector<int>& s) {
             j++;
         }
         return count;
-    }
+}

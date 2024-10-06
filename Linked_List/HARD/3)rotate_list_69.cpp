@@ -12,8 +12,8 @@ Steps-:
 6)return the new_head
 
 Code-: Time->O(N)
- int count(ListNode* head)
-    {
+int count(ListNode* head)
+{
         int c=0;
         while(head!=NULL)
         {
@@ -21,9 +21,10 @@ Code-: Time->O(N)
             head=head->next;
         }
         return c;
-    }
-    ListNode* rotateRight(ListNode* head, int k) {
-      if(head==NULL ||head->next==NULL) return head;
+}
+
+ListNode* rotateRight(ListNode* head, int k) {
+        if(head==NULL ||head->next==NULL) return head;
         int n=count(head);
         k=k%n;
         if(k==0) return head;
@@ -46,4 +47,4 @@ Code-: Time->O(N)
         curr->next=head;
         prev->next=NULL;
         return new_head;
-    }
+}

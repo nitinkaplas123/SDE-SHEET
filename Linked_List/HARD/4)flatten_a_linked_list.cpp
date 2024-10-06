@@ -36,7 +36,7 @@ Node *flatten(Node *root)  O(M) here we have M nodes in horizontal so we call me
     if(root==NULL || root->next==NULL)
     return root;
     
-    Node* mergeHead=flatten(root->next);
-    root=mergeTwoLists(root,mergeHead);
+    Node* root_next=flatten(root->next);
+    root=mergeTwoLists(root,root_next);
     return root;
 }

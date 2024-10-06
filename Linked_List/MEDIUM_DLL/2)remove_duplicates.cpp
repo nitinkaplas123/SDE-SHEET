@@ -2,7 +2,7 @@ https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-li
 
 Steps-:
 1)prev will be pointing to the first node.
-2)curr will be pointing to the last node.
+2)curr will be pointing to the second node.
 
 Code-:
 Node * removeDuplicates(struct Node *head)

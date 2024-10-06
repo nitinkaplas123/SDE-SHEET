@@ -20,4 +20,4 @@ int minJumps(vector<int>& arr) {
            }
        }
        return jumps;
-    }
+}
