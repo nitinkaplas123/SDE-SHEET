@@ -92,7 +92,6 @@ bool isSafe(int row,int col,int n,vector<string>&board)
             col--;
         }
         return true;
-
 }
 
 void solve(int col, vector<string>&board,vector<vector<string>>&ans,int n)
