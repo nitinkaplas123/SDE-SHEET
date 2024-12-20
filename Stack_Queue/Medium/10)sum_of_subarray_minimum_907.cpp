@@ -114,7 +114,9 @@ Steps-:
 
 
 Dry run -:
+    index 0 1 2 3 
 arr  ->  [3,1,2,4]
+
 prev ->  [1 2 1 2] 
 next ->  [1 3 1 1]
 

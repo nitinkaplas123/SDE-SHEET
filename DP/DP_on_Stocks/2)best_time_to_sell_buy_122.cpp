@@ -13,28 +13,27 @@ sell=prices[i-1];
 
 Code-:
 int maxProfit(vector<int>& prices) {
-        int n=prices.size();
-        int buy=0;
-        int sell=0;
-        int ans=0;
-        int i=1;
-        
-        while(i<n)
-        {
-            if(prices[i]>prices[i-1])
+       int n=prices.size();
+       int buy=0;
+       int sell=0;
+       int i=1;
+       int profit=0;
+       while(i<n)
+       {
+          if(prices[i]>prices[i-1])
+          {
+            buy=prices[i-1];
+            while(i<n and prices[i]>prices[i-1])
             {
-                buy=prices[i-1];
-                while(i<n and prices[i]>prices[i-1])
-                {
-                    i++;
-                }
-                sell=prices[i-1];
-                ans+=(sell-buy);
+                i++;
             }
-            else
-            i++;
-        }
-        return ans;
+            sell=prices[i-1];
+            profit+=sell-buy;
+          }
+          else
+          i++;
+       }
+       return profit;
 }
 
 

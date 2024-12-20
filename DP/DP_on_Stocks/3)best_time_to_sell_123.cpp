@@ -119,10 +119,10 @@ int maxProfit(vector<int>& prices)
             rmax=max(rmax,prices[i]);
         }
       
-        int ans=right[0];
-        for(int i=1;i<n;i++)
-        {
-           ans=max(ans,left[i-1]+right[i]);
-        }
-        return ans;
+         int ans=max(right[0],left[n-1]);
+         for(int i=1;i<n;i++)
+         {
+            ans=max(ans,left[i-1]+right[i]);
+         }
+         return ans;
 }

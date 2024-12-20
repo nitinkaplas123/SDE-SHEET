@@ -8,7 +8,7 @@ Steps-:
 
 Code-:
 Node* reverse(Node* head)
-    {
+{
         Node* prev=NULL;
         Node* curr=head;
         while(curr!=NULL)
@@ -19,9 +19,10 @@ Node* reverse(Node* head)
             curr=save;
         }
         return prev;
-    }
-    Node* addOne(Node *head) 
-    {
+}
+
+Node* addOne(Node *head) 
+{
         
         head= reverse(head);
         Node* new_head=head;
@@ -41,4 +42,4 @@ Node* reverse(Node* head)
         if(carry!=0)
         temp->next=new Node(carry);
         return reverse(new_head);
-    }
+}

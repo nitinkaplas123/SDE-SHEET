@@ -47,3 +47,4 @@ ListNode* middleNode(ListNode* head)
         }
         return slow;
 }
+

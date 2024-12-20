@@ -37,8 +37,8 @@ or
  4)return ans;
 
  
- Code-:
- int lengthOfLIS(vector<int>& nums) {
+Code-:
+int lengthOfLIS(vector<int>& nums) {
         int n=nums.size();
         vector<int>temp(n,1);
         int ans=0;
@@ -52,7 +52,7 @@ or
             ans=max(ans,temp[i]);
         }
         return ans;
-    }
+}
 
 Solution 2-:
 Steps-:
@@ -63,7 +63,7 @@ Steps-:
 
 Code-: Time->O(nlog(n))  Space->O(n)
 void helper(vector<int>&v,int val)
-    {
+{
         int n=v.size();
         int low=0;
         int high=n-1;
@@ -76,8 +76,10 @@ void helper(vector<int>&v,int val)
             low=mid+1;
         }
         v[low]=val;
-    }
-    int lengthOfLIS(vector<int>& nums) {
+}
+
+int lengthOfLIS(vector<int>& nums) 
+{
         int n=nums.size();
         vector<int>v;
         v.push_back(nums[0]);

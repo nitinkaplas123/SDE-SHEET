@@ -64,7 +64,7 @@ Solution 2-:
 Using recusrion 
 
 Code-:
- ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+ListNode* mergeTwoLists(ListNode* list1, ListNode* list2){
         if(list1==NULL)
         return list2;
         if(list2==NULL)
@@ -80,4 +80,4 @@ Code-:
             list2->next=mergeTwoLists(list1,list2->next);
             return list2;
         }
-    }
+}

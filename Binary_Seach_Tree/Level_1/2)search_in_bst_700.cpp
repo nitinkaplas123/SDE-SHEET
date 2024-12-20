@@ -1,5 +1,3 @@
-
-
 Code-: Time->O(log(N))
 TreeNode* searchBST(TreeNode* root, int val) {
         while(root!=NULL)

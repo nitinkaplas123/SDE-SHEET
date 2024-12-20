@@ -92,35 +92,3 @@ vector <int> max_of_subarrays(int *arr, int n, int k)
 }
 
 
-Java -:
- static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
-    {
-        ArrayList<Integer>list=new ArrayList<>();
-        Deque<Integer>dq=new ArrayDeque<>();
-        dq.addLast(0);
-        
-        for(int i=1;i<k;i++)
-        {
-            while(dq.isEmpty()==false && arr[i]>=arr[dq.peekLast()])
-            {
-                dq.removeLast();
-            }
-            dq.addLast(i);
-        }
-        
-        list.add(arr[dq.peekFirst()]);
-    
-        for(int i=k;i<n;i++)
-        {
-            if(i-dq.peekFirst()+1>k)
-            dq.removeFirst();
-            
-            while(dq.isEmpty()==false && arr[i]>=arr[dq.peekLast()])
-            {
-                dq.removeLast();
-            }
-            dq.addLast(i);
-            list.add(arr[dq.peekFirst()]);
-        }
-        return list;
-}

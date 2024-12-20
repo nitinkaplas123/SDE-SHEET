@@ -99,7 +99,7 @@ Steps-:
 
 
 Code-:
- ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
         ListNode* curr1=headA;
         ListNode* curr2=headB;
 

@@ -22,8 +22,6 @@ int knapSack(int N, int W, int val[], int wt[])
        return helper(N,W,val,wt);
 }
 
-
-
 Solution 2-:
 int helper(int memo[1001][1001],int N, int W, int val[], int wt[])
     {
