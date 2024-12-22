@@ -50,6 +50,8 @@ If visited[i][j]=0
 }
 
 Code-:
+Time -> O(4^n2) -> here we have n*n cells and at each cell we have 4 direction which makes o(4^n*2)
+Space-> O(n*n) 
 void helper(vector<vector<int>>&mat,int n,int i,int j,string curr,
                 vector<vector<int>>&visited,vector<string>&ans)
 {
@@ -86,4 +88,44 @@ vector<string> findPath(vector<vector<int>> &mat) {
         vector<vector<int>>visited(n,vector<int>(n,0));
         helper(mat,n,i,j,curr,visited,ans);
         return ans;
+}
+
+
+
+
+Solution 2-:
+Steps-:
+1)here we are optimising the space 
+
+Code-:
+Time ->  O(4^n*n)
+Space -> O(1)  only there is recursive calls stack.
+void helper(vector<vector<int>> &mat,int row,int col,int n,string str,
+                vector<string>&ans)
+{
+       if(row<0 || col<0 || row==n || col==n)   return ;
+       if(mat[row][col]==0) return ;
+       if(row==n-1 and col==n-1)
+       {
+           ans.push_back(str);
+           return ;
+       }
+       if(mat[row][col]==1)
+       {
+           mat[row][col]=2;
+           helper(mat,row-1,col,n,str+'U',ans);
+           helper(mat,row+1,col,n,str+'D',ans);
+           helper(mat,row,col-1,n,str+'L',ans);
+           helper(mat,row,col+1,n,str+'R',ans);
+           mat[row][col]=1;
+       }
+       return ;
+}
+vector<string> findPath(vector<vector<int>> &mat) {
+       int n=mat.size();
+       vector<string>ans;
+       string str="";
+       vector<vector<int>>visited(n,vector<int>(n,false));
+       helper(mat,0,0,n,str,ans,visited);
+       return ans;
 }
