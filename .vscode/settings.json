@@ -2,6 +2,7 @@
     "files.associations": {
         "complex": "cpp",
         "iosfwd": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "variant": "cpp"
     }
 }
