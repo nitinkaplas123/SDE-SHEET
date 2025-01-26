@@ -46,7 +46,6 @@ vector<string> letterCombinations(string digits) {
         m['8']="tuv";
         m['9']="wxyz";
         string str="";
-        int idx=0;
         int index=0;
         helper(digits,index,n,m,str,ans);
         return ans;

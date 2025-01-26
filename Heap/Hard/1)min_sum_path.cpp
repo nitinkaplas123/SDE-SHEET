@@ -18,7 +18,7 @@ Min heap -> because out of all we choose the mini value first.
 
 Code-:
 int minimumCostPath(vector<vector<int>>& grid) 
-    {
+{
         int n=grid.size();
         vector<vector<int>>ans(n,vector<int>(n,INT_MAX));
         ans[0][0]=grid[0][0];
@@ -53,4 +53,4 @@ int minimumCostPath(vector<vector<int>>& grid)
             }
         }
         return ans[n-1][n-1];
-    }
+}

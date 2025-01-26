@@ -59,6 +59,18 @@ if any point if board[row][col]=='Q' there means they attack each other means th
 return false.
 
 
+Time-:
+time -> t(n)= n * (t(n-1)+n)
+     -> t(n)= n*t(n-1) + n^2
+        t(n-1)= (n-1)*(t(n-2)+(n-1))
+
+
+    -> t(n)=n*(n-1)*(n-2) .... 
+time -> O(n!) + something
+
+Space-:
+O(n) for recursive call stack  + O(n^2) for making board.
+
 Code-:
 bool isSafe(int row,int col,int n,vector<string>&board)
 {
@@ -93,7 +105,6 @@ bool isSafe(int row,int col,int n,vector<string>&board)
         }
         return true;
 }
-
 void solve(int col, vector<string>&board,vector<vector<string>>&ans,int n)
 {
         if(col==n)
@@ -101,12 +112,12 @@ void solve(int col, vector<string>&board,vector<vector<string>>&ans,int n)
             ans.push_back(board);
             return ;
         }
-        for(int row=0;row<n;row++)
+        for(int row=0;row<n;row++)      O(n)
         {
-            if(isSafe(row,col,n,board))
+            if(isSafe(row,col,n,board))  o(n)
             {
                 board[row][col]='Q';
-                solve(col+1,board,ans,n);
+                solve(col+1,board,ans,n);  o(n-1)
                 board[row][col]='.';
             }
         }

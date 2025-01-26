@@ -40,4 +40,4 @@ vector<vector<int>> verticalTraversal(TreeNode* root) {
             v1.clear();
         }
         return v;
-    }
+}

@@ -98,7 +98,7 @@ Steps-:
 1)here we are optimising the space 
 
 Code-:
-Time ->  O(4^n*n)
+Time ->  O(4^n^2)
 Space -> O(1)  only there is recursive calls stack.
 void helper(vector<vector<int>> &mat,int row,int col,int n,string str,
                 vector<string>&ans)

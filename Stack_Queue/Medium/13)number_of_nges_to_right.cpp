@@ -29,3 +29,6 @@ vector<int> count_NGE(int n, vector<int> &arr, int queries, vector<int> &indices
         }
         return ans;
 }
+
+
+

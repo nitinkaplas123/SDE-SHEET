@@ -13,8 +13,8 @@ Steps-:
 
 
 Time ->O(N) Space->O(N)
- void parent(TreeNode* root,unordered_map<TreeNode*,TreeNode*>&m)
-    {
+void parent(TreeNode* root,unordered_map<TreeNode*,TreeNode*>&m)
+{
         queue<TreeNode*>q;
         q.push(root);
         //m[root]=NULL;
@@ -97,4 +97,4 @@ Time ->O(N) Space->O(N)
             time++;
         }
         return time;
-    }
+}

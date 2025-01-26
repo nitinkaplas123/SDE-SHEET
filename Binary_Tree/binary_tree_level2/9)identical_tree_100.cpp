@@ -7,11 +7,11 @@ Steps-:
 
 
 Code-:
- bool isSameTree(TreeNode* p, TreeNode* q) 
- {
+bool isSameTree(TreeNode* p, TreeNode* q) 
+{
         if(p==NULL and q==NULL) return 1;
         if(p==NULL || q==NULL) return 0;
 
         return (p->val==q->val and isSameTree(p->left,q->left) and 
                                    isSameTree(p->right,q->right));
- }
+}

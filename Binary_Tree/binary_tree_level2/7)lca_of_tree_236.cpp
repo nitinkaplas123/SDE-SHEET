@@ -2,7 +2,7 @@ Solution 1-:
 
 
 Code-:
- TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(root==NULL) return NULL;
         if(root==p || root==q) return root;
 
@@ -13,4 +13,4 @@ Code-:
         if(left!=NULL and right!=NULL) return root;
          
         return (left!=NULL)?left:right;
-    }
+}

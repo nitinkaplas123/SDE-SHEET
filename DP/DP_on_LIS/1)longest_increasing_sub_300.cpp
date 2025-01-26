@@ -1,4 +1,94 @@
-Solution 1-:
+Solution 1-: (using recursion)
+Steps-:
+1)(index,prev_index) -:
+  1. index is the current index which we want to include in our lis. 
+  2. prev_index is the index which is pointing to the prev element in my lis.
+Case1-:
+1. if(prev_index==--1) and index=0 means its the first element. 
+2. if the prev_element<curr_element then we can include the current element right ?
+
+{
+    pick   -> 1 + f(index+1,index) 
+    not_pick= 0 + f(index+1,prev_index);
+}
+
+
+
+Case2-:
+1. when curr_element<=prev_element -> means we cannot take the current_element in lis. 
+{
+    not_pick=0+f(index+1,prev);
+}
+
+
+Base Case -:
+1)(index==n)  stop here.
+
+
+
+Time->O(2^n) -> at every index two options -> pick,not_pick.
+Space ->O(N) -> recursive call stack space.
+Code-:
+int helper(vector<int>&nums,int index,int prev_index,int n)
+{
+        if(index==n) return 0;
+        if(prev_index==-1 || nums[prev_index]<nums[index])
+        {
+            int pick=1+helper(nums,index+1,index,n);
+            int not_pick=0+helper(nums,index+1,prev_index,n);
+            return max(pick,not_pick);
+        }
+        else
+        return 0+helper(nums,index+1,prev_index,n);
+}
+int lengthOfLIS(vector<int>& nums) {
+        int n=nums.size();
+        int prev_index=-1;
+        int index=0;
+
+        return helper(nums,index,prev_index,n);
+}
+
+
+
+Solution 2-:
+Steps-;
+1)using memo 
+
+Note -: In recursion prev_index=-1 so if we make a memo 2d array -> -1 is not valid index in 2d array. 
+        So wherever in 2d array 
+        we need memo[index][prev_index] make -> memo[index][prev_index+1];
+
+
+Time=>O(N*N) Space->O(N*N)
+Code-:
+int helper(vector<int>&nums,int index,int prev_index,int n)
+{
+        if(index==n) return 0;
+        if(prev_index==-1 || nums[prev_index]<nums[index])
+        {
+            int pick=1+helper(nums,index+1,index,n);
+            int not_pick=0+helper(nums,index+1,prev_index,n);
+            return max(pick,not_pick);
+        }
+        else
+        return 0+helper(nums,index+1,prev_index,n);
+}
+int lengthOfLIS(vector<int>& nums) {
+        int n=nums.size();
+        int prev_index=-1;
+        int index=0;
+
+        return helper(nums,index,prev_index,n);
+}
+
+
+
+
+
+
+
+Solution 3-:
 Steps-:
 1)Make a temp array by making all value 1 bcz min there will be size 1 of increasing subsequence.
 2)Now traverse from i=1  to n and at each point i we have to go to left side till reach 0.

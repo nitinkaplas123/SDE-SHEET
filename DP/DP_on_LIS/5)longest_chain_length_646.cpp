@@ -1,4 +1,3 @@
-https://www.geeksforgeeks.org/problems/max-length-chain/1
 
 
 Solution 1-:
@@ -73,25 +72,29 @@ Idea-:
  start time o/p -> 1 
  end time o/p   -> 3
 Code-:
-static bool comp(val &val1,val & val2)
+bool static comp(pair<int,int>&p1,pair<int,int>&p2)
 {
-        return val1.second<val2.second;
+        return p1.second<p2.second;
 }
-
-int maxChainLen(struct val p[],int n)
-{
-       sort(p,p+n,comp);
-       
-       int count=1;
-       int prev=p[0].second;
-       for(int i=1;i<n;i++)
-       {
-           if(prev<p[i].first)
-           {
-               count++;
-               prev=p[i].second;
-           }
-       }
-       return count;
+int findLongestChain(vector<vector<int>>& pairs) {
+        int n=pairs.size();
+        vector<pair<int,int>>v;
+        for(int i=0;i<n;i++)
+        {
+            v.push_back({pairs[i][0],pairs[i][1]});
+        }
+        sort(v.begin(),v.end(),comp);
+        
+        int b=v[0].second;
+        int count=1;
+        for(int i=1;i<n;i++)
+        {
+            int c=v[i].first;
+            if(b<c)
+            {
+                count++;
+                b=v[i].second;
+            }
+        }
+        return count;
 }
-

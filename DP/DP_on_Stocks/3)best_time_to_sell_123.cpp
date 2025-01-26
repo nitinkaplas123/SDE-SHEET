@@ -1,3 +1,165 @@
+Solution 1-:
+Steps-:
+1)using recursion.
+2)using same idea of infinite transcation -> here we have a cap of 2.
+
+
+Code-:
+int helper(vector<int>&prices,int index,int buy,int n,int cap)
+{
+        if(cap==0 || index==n) return 0;
+        if(buy)
+        {
+            int take=-prices[index]+helper(prices,index+1,0,n,cap);
+            int not_take=0+helper(prices,index+1,1,n,cap);
+            return max(take,not_take);
+        }
+        else
+        {
+            int sell=prices[index]+helper(prices,index+1,1,n,cap-1);
+            int not_sell=0+helper(prices,index+1,0,n,cap);
+            return max(sell,not_sell);
+        }
+}
+int maxProfit(vector<int>& prices) {
+        int n=prices.size();
+        int index=0;
+        int buy=1;
+        return helper(prices,index,buy,n,2);
+}
+
+
+Solution 2-:
+Steps-:
+1) Using memo.
+2) buy=> yes/no -> [2]
+3) cap=2 -> either 0/1/2 -> no transcation, one transaction, two transaction -> because question said atmost 2. [3]
+4) base case-:
+   1. if (index==n)  return 0.
+   2. if (cap==0)    return 0.
+
+int helper(int memo[2][3][100000],vector<int>&prices,int index,int buy,int n,int cap)
+{
+        if(cap==0 || index==n) return 0;
+        if(memo[buy][cap][index]!=-1) return memo[buy][cap][index];
+        
+        if(buy)
+        {
+            int take=-prices[index]+helper(memo,prices,index+1,0,n,cap);
+            int not_take=0+helper(memo,prices,index+1,1,n,cap);
+            return memo[buy][cap][index]=max(take,not_take);
+        }
+        else
+        {
+            int sell=prices[index]+helper(memo,prices,index+1,1,n,cap-1);
+            int not_sell=0+helper(memo,prices,index+1,0,n,cap);
+            return memo[buy][cap][index]=max(sell,not_sell);
+        }
+}
+int maxProfit(vector<int>& prices) 
+{
+        int n=prices.size();
+        int index=0;
+        int buy=1;
+        int memo[2][3][100000];
+        memset(memo,-1,sizeof(memo));
+        return helper(memo,prices,index,buy,n,2);
+}
+
+
+
+Solution 3-:
+Steps-:
+1)Using tabulation.
+
+Code-:
+int maxProfit(vector<int>& prices) 
+{
+        int n=prices.size();
+        
+        int dp[2][3][n+1];
+        for(int index=0;index<=n;index++)
+        {
+            for(int buy=0;buy<=1;buy++)
+            {
+                dp[buy][0][index]=0;
+            }
+        }
+
+        for(int buy=0;buy<=1;buy++)
+        {
+            for(int cap=0;cap<=2;cap++)
+            {
+                dp[buy][cap][n]=0;
+            }
+        }
+        for(int index=n-1;index>=0;index--)
+        {
+            for(int cap=1;cap<=2;cap++)
+            {
+                for(int buy=0;buy<=1;buy++)
+                {
+                     if(buy)
+                     {
+                      int take=-prices[index]+dp[0][cap][index+1];
+                      int not_take=0+dp[1][cap][index+1];
+                      dp[buy][cap][index]=max(take,not_take);
+                     }
+                     else
+                     {
+                      int sell=prices[index]+dp[1][cap-1][index+1];
+                      int not_sell=0+dp[0][cap][index+1];
+                      dp[buy][cap][index]=max(sell,not_sell);
+                     }
+                }
+            }
+        }
+        return dp[1][2][0];
+}
+
+
+
+Solution 4-:
+Steps-:
+1)space optimisation. 
+2) prev and curr -> [2][3] vector for 2 -> buy and 3-> cap
+
+Code-:
+int maxProfit(vector<int>& prices) 
+    {
+        int n=prices.size();
+        vector<vector<int>>prev(2,vector<int>(3,0));
+        vector<vector<int>>curr(2,vector<int>(3,0));
+
+        for(int index=n-1;index>=0;index--)
+        {
+            for(int cap=1;cap<=2;cap++)
+            {
+                for(int buy=0;buy<=1;buy++)
+                {
+                     if(buy)
+                     {
+                        //dp[0][cap][index+1];
+                      int take=-prices[index]+prev[0][cap];
+                      //dp[1][cap][index+1];
+                      int not_take=0+prev[1][cap];
+                      curr[buy][cap]=max(take,not_take);
+                     }
+                     else
+                     {
+                      int sell=prices[index]+prev[1][cap-1];
+                      int not_sell=0+prev[0][cap];
+                      curr[buy][cap]=max(sell,not_sell);
+                     }
+                }
+            }
+            prev=curr;
+        }
+        return curr[1][2];
+}
+
+
+
 This function calculates the maximum profit from buying and selling stocks on different days, allowing for two transactions: one for buying and one for selling. Let’s break down the code step by step.
 
 ### Input

@@ -77,7 +77,7 @@ we have not consider that point
 or vice versa.
 
 void helper(vector<int>&nums,vector<int>&v1)
-	{
+{
 	    int n=nums.size();
 	    int temp[n];
 	    for(int i=0;i<n;i++)
@@ -95,9 +95,9 @@ void helper(vector<int>&nums,vector<int>&v1)
 	        }
 	        v1.push_back(temp[i]);
 	    }
-	}
+}
 
-    int LongestBitonicSequence(int n, vector<int> &nums) {
+int LongestBitonicSequence(int n, vector<int> &nums) {
 	   vector<int>v1;
 	   vector<int>v2;
 	   helper(nums,v1);
