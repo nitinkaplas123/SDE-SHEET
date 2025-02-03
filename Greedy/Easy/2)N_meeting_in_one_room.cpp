@@ -1,5 +1,11 @@
 https://www.geeksforgeeks.org/problems/n-meetings-in-one-room-1587115620/1
 
+
+Solution 1-:
+Steps-:
+1)Same logic as prev question.
+
+
 Code-: Time->O(Nlog(N))
 static bool comp(pair<int,int>&a,pair<int,int>&b)
 {

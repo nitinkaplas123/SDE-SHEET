@@ -15,8 +15,8 @@ Subsequence -:
 2)Question said return the subset of elements whose every pair satisfied the condition -> {nums[i]%nums[j]==0 || nums[j]%nums[i]==0}.
 eg [1,2,4,8]
 1-> pairs with {2,4,8}   ->  {1,2},{1,4},{1,8} 
-2-> pairs with {4,8}    -> {2,4},{2,8}
-4 ->           {8}     -> {4,8}
+2-> pairs with {4,8}    ->   {2,4},{2,8}
+4 ->           {8}     ->    {4,8}
 
 means every element -> pairs with (n-1) elements -> it should satisfied the condition.
 
@@ -49,7 +49,7 @@ Space->O(n)
 Code-:
 vector<int> largestDivisibleSubset(vector<int>& nums) {
         int n=nums.size();
-       sort(nums.begin(),nums.end());
+        sort(nums.begin(),nums.end());
         vector<int>temp(n,1);
         vector<int>hash(n);
         for(int i=0;i<n;i++){

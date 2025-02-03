@@ -62,26 +62,27 @@ Note -: In recursion prev_index=-1 so if we make a memo 2d array -> -1 is not va
 
 Time=>O(N*N) Space->O(N*N)
 Code-:
-int helper(vector<int>&nums,int index,int prev_index,int n)
+int helper(vector<vector<int>>&memo,vector<int>&nums,int index,int prev_index,int n)
 {
         if(index==n) return 0;
+        if(memo[index][prev_index+1]!=-1) return memo[index][prev_index+1];
+
         if(prev_index==-1 || nums[prev_index]<nums[index])
         {
-            int pick=1+helper(nums,index+1,index,n);
-            int not_pick=0+helper(nums,index+1,prev_index,n);
-            return max(pick,not_pick);
+            int pick=1+helper(memo,nums,index+1,index,n);
+            int not_pick=0+helper(memo,nums,index+1,prev_index,n);
+            return memo[index][prev_index+1]=max(pick,not_pick);
         }
         else
-        return 0+helper(nums,index+1,prev_index,n);
+        return memo[index][prev_index+1]=0+helper(memo,nums,index+1,prev_index,n);
 }
 int lengthOfLIS(vector<int>& nums) {
         int n=nums.size();
         int prev_index=-1;
         int index=0;
-
-        return helper(nums,index,prev_index,n);
+        vector<vector<int>>memo(n+1,vector<int>(n+1,-1));
+        return helper(memo,nums,index,prev_index,n);
 }
-
 
 
 

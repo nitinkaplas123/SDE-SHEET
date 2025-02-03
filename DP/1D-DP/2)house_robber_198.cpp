@@ -43,6 +43,9 @@ int helper(int memo[101],vector<int>&nums,int n)
 int rob(vector<int>& nums) {
        int n=nums.size();
        int memo[101];
+       int []memo=new int[101];
+       Arrays.fill(memo,-1);
+       
        memset(memo,-1,sizeof(memo));
        return helper(memo,nums,n);
 }

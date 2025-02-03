@@ -1,5 +1,40 @@
 https://www.geeksforgeeks.org/problems/activity-selection-1587115620/1
 
+Solution 1-:
+Steps-:
+1)sort the array acc to start time,
+2)now use the same pattern for finding lis.
+
+Time->O(N^2)
+Code-:
+int activitySelection(vector<int> &start, vector<int> &end) {
+        int n=start.size();
+        vector<pair<int,int>>v;
+        
+        for(int i=0;i<start.size();i++)
+        {
+            v.push_back({start[i],end[i]});
+        }
+        sort(v.begin(),v.end());
+        
+        vector<int>temp(n,1);
+        int maxx=1;
+        for(int i=1;i<n;i++)
+        {
+            for(int j=0;j<i;j++)
+            {
+                if(v[i].first>v[j].second)
+                temp[i]=max(temp[i], 1+temp[j]);
+            }
+            maxx=max(maxx,temp[i]);
+        }
+        return maxx;
+}
+
+
+
+Solution 2-:
+
 Steps-:
 1)Sort the array according to end time of meeting.
   why end ?
