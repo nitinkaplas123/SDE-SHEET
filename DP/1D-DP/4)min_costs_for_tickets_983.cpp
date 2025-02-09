@@ -30,6 +30,7 @@ Code-:
 int helper(vector<int>&days,vector<int>&costs,int index,int n)
 {
         if(index>=n) return 0;
+        
         int option1=costs[0]+helper(days,costs,index+1,n);
         int i;
         for(i=index;i<n and days[i]<days[index]+7;i++);

@@ -19,38 +19,37 @@ Min heap -> because out of all we choose the mini value first.
 Code-:
 int minimumCostPath(vector<vector<int>>& grid) 
 {
-        int n=grid.size();
-        vector<vector<int>>ans(n,vector<int>(n,INT_MAX));
-        ans[0][0]=grid[0][0];
-        
-        priority_queue<pair<int,pair<int,int>>,
-                      vector<pair<int,pair<int,int>>>,
-                      greater<pair<int,pair<int,int>>>>pq;
-                      
-        pq.push({grid[0][0],{0,0}});
-        
-        int r[4]={-1,1,0,0};
-        int c[4]={0,0,-1,1};
-        
-        while(pq.empty()==false)
-        {
-            auto x=pq.top();
-            pq.pop();
-            
-            int val=x.first;
-            int row=x.second.first;
-            int col=x.second.second;
-            
-            for(int i=0;i<4;i++)
-            {
-                int ur=row+r[i];
-                int uc=col+c[i];
-                if(ur>=0 and ur<n and uc>=0 and uc<n and ans[ur][uc]>val+grid[ur][uc])
-                {
-                    ans[ur][uc]=val+grid[ur][uc];
-                    pq.push({ans[ur][uc],{ur,uc}});
-                }
-            }
-        }
-        return ans[n-1][n-1];
-}
+       int n=grid.size();
+       int m=grid[0].size();
+       
+       vector<vector<int>>dist(n,vector<int>(m,INT_MAX));
+       priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,greater<pair<int,pair<int,int>>>>pq;
+       
+       pq.push({grid[0][0],{0,0}});
+       dist[0][0]=grid[0][0];
+       
+       int r[4]={-1,1,0,0};
+       int c[4]={0,0,-1,1};
+       while(!pq.empty())
+       {
+           int val=pq.top().first;
+           int row=pq.top().second.first;
+           int col=pq.top().second.second;
+           pq.pop();
+           
+           if(row==n-1 and col==m-1)
+           return val;
+           
+           for(int i=0;i<4;i++)
+           {
+               int ur=row+r[i];
+               int uc=col+c[i];
+               if(ur>=0 and ur<n and uc>=0 and uc<m and dist[ur][uc]>val+grid[ur][uc])
+               {
+                   pq.push({val+grid[ur][uc],{ur,uc}});
+                   dist[ur][uc]=val+grid[ur][uc];
+               }
+           }
+       }
+       return -1;
+  }

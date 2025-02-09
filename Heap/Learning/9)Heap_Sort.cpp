@@ -27,7 +27,7 @@ Space->O(log(n)) -> recursive call stack.
 
 Code-:
 void maxHeapify(vector<int>&arr,int i,int n)
-    {
+{
         int largest=i;
         int left=(2*i+1);
         int right=(2*i+2);
@@ -42,15 +42,15 @@ void maxHeapify(vector<int>&arr,int i,int n)
             swap(arr[largest],arr[i]);
             maxHeapify(arr,largest,n);
         }
-    }
-    void buildMaxHeap(vector<int>&arr,int n)
-    {
+}
+void buildMaxHeap(vector<int>&arr,int n)
+{
         for(int i=(n-2)/2;i>=0;i--)
         {
             maxHeapify(arr,i,n);
         }
-    }
-    void heapSort(vector<int>& arr) {
+}
+void heapSort(vector<int>& arr) {
         int n=arr.size();
         buildMaxHeap(arr,n);
         
@@ -59,4 +59,4 @@ void maxHeapify(vector<int>&arr,int i,int n)
             swap(arr[i],arr[0]);
             maxHeapify(arr,0,i);
         }
-    }
+}

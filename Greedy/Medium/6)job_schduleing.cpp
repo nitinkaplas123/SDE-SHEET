@@ -1,3 +1,5 @@
+https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
+
 Solution 1-:
 Steps-:
 1)Reverse Sort the array acc to profit 
@@ -74,10 +76,7 @@ Steps-:
 Time->O(Nlog(N))
 Space->O(N)
 Code-:
-static bool comp(pair<int,int>&a,pair<int,int>&b)
-{
-        return a.first<b.first;
-}
+
 vector<int> JobSequencing(vector<int> &id, vector<int> &deadline,
                               vector<int> &profit) {
         int n=profit.size();
@@ -87,7 +86,7 @@ vector<int> JobSequencing(vector<int> &id, vector<int> &deadline,
         {
             v.push_back({deadline[i],profit[i]});
         }
-        sort(v.begin(),v.end(),comp);
+        sort(v.begin(),v.end());
         
         priority_queue<int,vector<int>,greater<int>>pq;
         int curr=1;

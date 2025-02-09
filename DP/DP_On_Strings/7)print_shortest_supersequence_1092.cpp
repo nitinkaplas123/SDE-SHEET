@@ -7,8 +7,8 @@ Steps-:
 
 class Solution {
 public:
-    string helper2(string &str1,string &str2,string &str3,int n1,int n2)
-    {
+string helper2(string &str1,string &str2,string &str3,int n1,int n2)
+{
        string str="";
        int n3=str3.length();
 
@@ -45,9 +45,9 @@ public:
            str.push_back(str2[j++]);
        }
        return str;
-    }
-    void helper(string &res,int dp[1001][1001],int n,int m,string &s1,string &s2)
-    {
+}
+void helper(string &res,int dp[1001][1001],int n,int m,string &s1,string &s2)
+{
         int i=n;
         int j=m;
 
@@ -66,8 +66,8 @@ public:
             else
             j--;
         }
-    }
-    string shortestCommonSupersequence(string str1, string str2) {
+}
+string shortestCommonSupersequence(string str1, string str2) {
         int n=str1.size();
         int m=str2.size();
         int dp[1001][1001];

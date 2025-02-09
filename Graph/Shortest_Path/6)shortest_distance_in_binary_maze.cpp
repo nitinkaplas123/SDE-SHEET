@@ -13,50 +13,46 @@ int shortestPath(vector<vector<int>> &grid, pair<int, int> source,
     {
         int n=grid.size();
         int m=grid[0].size();
+        
         int r1=source.first;
         int c1=source.second;
-        
         int r2=destination.first;
         int c2=destination.second;
         
-        if(grid[r1][c1]==0 || grid[r2][c2]==0)
-        return -1;
+        if(grid[r1][c1]==0 || grid[r2][c2]==0) return -1;
         
-        vector<vector<int>>ans(n,vector<int>(m,INT_MAX));
-        ans[r1][c1]=grid[r1][c1];
+        vector<vector<int>>dist(n,vector<int>(m,INT_MAX));
+        dist[r1][c1]=1;
         
         priority_queue<pair<int,pair<int,int>>,
-                      vector<pair<int,pair<int,int>>>,
-                      greater<pair<int,pair<int,int>>>>pq;
-                      
-       
-        pq.push({grid[r1][c1],{r1,c1}});
+                       vector<pair<int,pair<int,int>>>,
+                       greater<pair<int,pair<int,int>>>>pq;
+        pq.push({1,{r1,c1}});
         
         int r[4]={-1,1,0,0};
         int c[4]={0,0,-1,1};
-        
-        while(pq.empty()==false)
+        while(!pq.empty())
         {
-            auto x=pq.top();
+            int val=pq.top().first;
+            int row=pq.top().second.first;
+            int col=pq.top().second.second;
             pq.pop();
             
-            int val=x.first;
-            int row=x.second.first;
-            int col=x.second.second;
+            if(row==r2 and col==c2) return val-1;
             
             for(int i=0;i<4;i++)
             {
                 int ur=row+r[i];
                 int uc=col+c[i];
-                if(ur>=0 and ur<n and uc>=0 and uc<m and 
-                   grid[ur][uc]==1 and ans[ur][uc]>val+grid[ur][uc])
+                if(ur>=0 and ur<n and uc>=0 and uc<m and grid[ur][uc]==1
+                   and dist[ur][uc]>1+val)
                 {
-                    ans[ur][uc]=val+grid[ur][uc];
-                    pq.push({ans[ur][uc],{ur,uc}});
+                    dist[ur][uc]=1+val;
+                    pq.push({dist[ur][uc],{ur,uc}});
                 }
             }
         }
-        return (ans[r2][c2]==INT_MAX)?-1:ans[r2][c2]-1;
+        return -1;
 }
 
 

@@ -36,21 +36,21 @@ so there is no need of using pq.
 lets use queue 
 
 ### in below code its normal dikjistra algorithms which is not working for below case-:
-n =
-4
-flights =
-[[0,1,1],[0,2,5],[1,2,1],[2,3,1]]
-src =
-0
-dst =
-3
-k =
-1
+n =7
+flights =[[0,1,100],[0,2,100],[2,3,1],[3,4,600],[1,4,602],[4,5,6],[5,6,6]]
+src =0
+dst =6
+k =3
+
+
+Output->   -1
+Expected-> 7
 
 
 
 
 
+Wrong code -> priority -> gives to cost
 Code-:
 int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) 
     {
@@ -91,79 +91,113 @@ int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int
             }
         }
         return (dist[dst]==INT_MAX)?-1:dist[dst];
-    }
+}
 
 
 
+
+
+
+Solution 1-:
+
+Time->O(V+E)log(V)  where V is the no. of airports (vertexes) and E is the no. of edges bw airport.
+Space ->O(V+E) -> for adjacency list and
+The priority queue can hold up to 
+O(V⋅k)
+O(V⋅k) elements in the worst case, where k is the maximum number of stops.
+
+
+Correct Code -> priority-> stops.
+Code-:
+int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+         int m=flights.size();
+         vector<vector<pair<int,int>>>adj(n);
+         for(int i=0;i<m;i++)
+         {
+             int u=flights[i][0];
+             int v=flights[i][1];
+             int wt=flights[i][2];
+             adj[u].push_back({v,wt});
+         }
+         vector<int>dist(n,INT_MAX);
+         priority_queue<pair<int,pair<int,int>>,vector<pair<int,pair<int,int>>>,
+                        greater<pair<int,pair<int,int>>>>pq;
+         //{stops,{cost,node}}
+         pq.push({0,{0,src}});
+         dist[src]=0;
+
+         while(!pq.empty())
+         {
+            int stops=pq.top().first;
+            int cost=pq.top().second.first;
+            int node=pq.top().second.second;
+            
+            pq.pop();
+
+            for(auto x:adj[node])
+            {
+                int adjNode=x.first;
+                int wt=x.second;
+                if(stops<=k and dist[adjNode]>cost+wt)
+                {
+                    dist[adjNode]=cost+wt;
+                    pq.push({stops+1,{dist[adjNode],adjNode}});
+                }
+            }
+         }
+         return (dist[dst]==INT_MAX)?-1:dist[dst];
+}
 
 
 
 Solution 2-:
 Steps-:
+0) if u see in pq we give priority to stops and go like this 0 stops =>1 stops. => 2 stops.
+   this task can be done by queue data strcuture as well.
 1)using queue{stops,node,cost}.
 2)pls donot use dist[node] value because as i said 
   for a single node to reach at that node we have n ways.
   so at every path we have differnt stops and cost as well.
 
 
-Note-:
-for(auto x:adj[node])
-{
-    int adj_node=x.first;
-    int wt=x.second;
-    if(cost+wt<dist[adj_node] and stops<=k)
-    {
-        dist[adj_node]=cost+wt;
-        pq.push({stops+1,{adj_node,dist[adj_node]}});
-    }
-}
+Time-> O(V*K + E)  where v is the no. of airports and k is given k why k here ?
+       because BFS works in level by level 1st k=0 they traverse all the neighbour then k=1, k=2 upto k.
+Space ->O(V+E+V⋅k)
+Code-:
+  int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k) {
+         int m=flights.size();
+         vector<vector<pair<int,int>>>adj(n);
+         for(int i=0;i<m;i++)
+         {
+             int u=flights[i][0];
+             int v=flights[i][1];
+             int wt=flights[i][2];
+             adj[u].push_back({v,wt});
+         }
+         vector<int>dist(n,INT_MAX);
+         queue<pair<int,pair<int,int>>>q;
+         
+         q.push({0,{0,src}});
+         dist[src]=0;
 
-3)here here we compare like cost+wt -> right
-  dist[node]+wt<dist[adj_node] is wrong.
-
-  because there may be differnt {stops,cost} for same node.
-
-
-Code-: Time->Elog(V)  but here we are using queue ->
-       Time->E ->    no. of edges  -> O(M)
- int findCheapestPrice(int n, vector<vector<int>>& flights, int src, int dst, int k)  {
-        int m=flights.size();
-       
-        vector<vector<pair<int, int>>> adj(n);
-        for(int i=0;i<m;i++)
-        {
-            int u=flights[i][0];
-            int v=flights[i][1];
-            int wt=flights[i][2];
-            adj[u].push_back({v,wt});
-        }
-        
-        vector<int>dist(n,INT_MAX);
-        dist[src]=0;
-        queue<pair<int,pair<int,int>>>q;
-
-        q.push({0,{src,0}});
-        
-        while(q.empty()==false)
-        {
+         while(!q.empty())
+         {
             int stops=q.front().first;
-            int node=q.front().second.first;
-            int cost=q.front().second.second;
+            int cost=q.front().second.first;
+            int node=q.front().second.second;
+            
             q.pop();
-            
-            if(stops>k)
-            continue;
-            
+
             for(auto x:adj[node])
             {
-                int adj_node=x.first;
+                int adjNode=x.first;
                 int wt=x.second;
-                if(cost+wt<dist[adj_node] and stops<=k)
+                if(stops<=k and dist[adjNode]>cost+wt)
                 {
-                    dist[adj_node]=cost+wt;
-                    q.push({stops+1,{adj_node,dist[adj_node]}});
+                    dist[adjNode]=cost+wt;
+                    q.push({stops+1,{dist[adjNode],adjNode}});
                 }
             }
-        }
-        return (dist[dst]==INT_MAX)?-1:dist[dst];
+         }
+         return (dist[dst]==INT_MAX)?-1:dist[dst];
 }

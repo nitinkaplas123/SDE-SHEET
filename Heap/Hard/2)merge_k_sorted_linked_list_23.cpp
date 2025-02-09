@@ -8,6 +8,7 @@ class comp
     }
 };
 
+
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {

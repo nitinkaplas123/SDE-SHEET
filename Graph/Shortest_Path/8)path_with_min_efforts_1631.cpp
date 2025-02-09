@@ -120,7 +120,7 @@ int minimumEffortPath(vector<vector<int>>&grid) {
                 if(ur>=0 and ur<n and uc>=0 and uc<m)
                 {
                     int diff=abs(grid[ur][uc]-grid[row][col]);
-                    diff=max(diff,dist[row][col]);
+                    diff=max(diff,dist[row][col])x;
                     if(dist[ur][uc]>diff)
                     {
                       dist[ur][uc]=diff;

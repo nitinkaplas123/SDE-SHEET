@@ -18,26 +18,30 @@ level3 -> 7-4+1  -> 4
 
 
 Code-:
-int widthOfBinaryTree(TreeNode* root) 
-{
+int widthOfBinaryTree(TreeNode* root) {
         queue<pair<TreeNode*,int>>q;
-        q.push({root,1});
+        q.push({root,0});
         int ans=1;
-        while(q.empty()==false)
+
+        while(!q.empty())
         {
             int first=q.front().second;
             int last=q.back().second;
             ans=max(ans,last-first+1);
+
             int size=q.size();
             for(int i=0;i<size;i++)
             {
                 TreeNode* curr=q.front().first;
-                int index=q.front().second;
+                int h=q.front().second;
                 q.pop();
+
                 if(curr->left)
-                q.push({curr->left,(long long)2*index+1});
+                q.push({curr->left,(long long)2*h+1});
+                
                 if(curr->right)
-                q.push({curr->right,(long long)2*index+2});
+                q.push({curr->right,(long long)2*h+2});
+                
             }
         }
         return ans;

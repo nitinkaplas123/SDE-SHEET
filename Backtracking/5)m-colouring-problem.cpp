@@ -56,6 +56,8 @@ bool helper(int node,int v,int m,vector<int>adj[],unordered_map<int,int>&color)
                 color[node]=i;
                 if(helper(node+1,v,m,adj,color))
                 return true;
+                else
+                color[node]=0;
             }
         }
         return false;

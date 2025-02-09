@@ -1,5 +1,14 @@
 Reference -> mik video
+Task-:
+1)find the min no. of removals to make array a mountains array -> first increasing then decreasing.
+2)So if i find the maxx len of mountain array then return (n-max_len);
+Steps-:
+1)Find the max bitonic subsequence.
+2) return n-maxx;  
 
+
+Time->O(N^2)
+Space->O(N)
 Code-:
 int minimumMountainRemovals(vector<int>& nums) {
         int n = nums.size();
@@ -25,11 +34,11 @@ int minimumMountainRemovals(vector<int>& nums) {
             }
         }
 
-        int minRemovals = n;
+        int maxx=1;
         for(int i = 0; i < n; i++) 
         { 
             if(LIS[i] > 1 && LDS[i] > 1)
-            minRemovals = min(minRemovals, n - LIS[i] - LDS[i] + 1);
+            maxx=max(maxx,LIS[i]+LDS[i]-1);
         }
-        return minRemovals;
+        return n-maxx;
 }

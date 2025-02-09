@@ -27,7 +27,7 @@ int trap(vector<int>& height) {
            ans+=min(left_max,right_max)-height[i];
         }
         return ans;
-    }
+}
 
 
 Solution 2-:

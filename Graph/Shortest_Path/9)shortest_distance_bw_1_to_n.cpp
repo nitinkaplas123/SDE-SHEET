@@ -109,3 +109,66 @@ vector<int> shortestPath(int n, int m, vector<vector<int>>& edges) {
         reverse(path.begin(),path.end());
         return path;
 }
+
+
+
+Solution 2-:
+Steps-:
+1)Same as up 
+2) changes -> priority_queue -> queue.
+
+Code-:
+ vector<int> shortestPath(int n, int m, vector<vector<int>>& edges) {
+        vector<pair<int,int>>adj[n+1];
+        for(int i=0;i<m;i++)
+        {
+            int u=edges[i][0];
+            int v=edges[i][1];
+            int wt=edges[i][2];
+            adj[u].push_back({v,wt});
+            adj[v].push_back({u,wt});
+        }
+        
+        vector<int>dist(n+1,INT_MAX);
+        vector<int>hash(n+1);
+        for(int i=1;i<=n;i++){
+            hash[i]=i;
+        }
+        dist[1]=0;
+        
+        //priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>>pq;
+        queue<pair<int,int>>q;
+        q.push({0,1});
+        
+        while(!q.empty())
+        {
+            int val=q.front().first;
+            int node=q.front().second;
+            q.pop();
+            
+            for(auto x:adj[node])
+            {
+                int adjNode=x.first;
+                int wt=x.second;
+                if(dist[adjNode]>dist[node]+wt)
+                {
+                    dist[adjNode]=dist[node]+wt;
+                    q.push({dist[adjNode],adjNode});
+                    hash[adjNode]=node;
+                }
+            }
+        }
+        if(dist[n]==INT_MAX) return {-1};
+        
+        vector<int>ans;
+        ans.push_back(n);
+        int index=n;
+        while(hash[index]!=index)
+        {
+            index=hash[index];
+            ans.push_back(index);
+        }
+        ans.push_back(dist[n]);
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }

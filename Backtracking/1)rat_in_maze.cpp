@@ -125,7 +125,6 @@ vector<string> findPath(vector<vector<int>> &mat) {
        int n=mat.size();
        vector<string>ans;
        string str="";
-       vector<vector<int>>visited(n,vector<int>(n,false));
        helper(mat,0,0,n,str,ans,visited);
        return ans;
 }
