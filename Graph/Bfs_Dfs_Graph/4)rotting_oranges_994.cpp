@@ -33,12 +33,13 @@ when its freshOrange
 
 
 Time->O(N*M)
-int orangesRotting(vector<vector<int>>& grid) 
-{
+int orangesRotting(vector<vector<int>>& grid) {
         int n=grid.size();
         int m=grid[0].size();
-        int freshOranges=0;
+
         queue<pair<int,int>>q;
+        int freshOranges=0;
+
         for(int i=0;i<n;i++)
         {
             for(int j=0;j<m;j++)
@@ -49,44 +50,41 @@ int orangesRotting(vector<vector<int>>& grid)
                 freshOranges++;
             }
         }
-
+       
         if(freshOranges==0) return 0;
         
         int r[4]={-1,1,0,0};
         int c[4]={0,0,-1,1};
-
-        int count=0;
+        int time=0;
         while(q.empty()==false)
         {
             int size=q.size();
             bool flag=false;
             for(int i=0;i<size;i++)
             {
-               auto x=q.front();
-               q.pop();
-               for(int i=0;i<4;i++)
-               {
-                 int row=x.first+ r[i];
-                 int col=x.second+ c[i];
+                int row=q.front().first;
+                int col=q.front().second;
+                q.pop();
 
-                 if(row<0 || row==n || col<0 || col==m)
-                 continue;
-
-                 if(grid[row][col]==1)
-                 {
-                    grid[row][col]=2;
-                    freshOranges--;
-                    flag=true;
-                    q.push({row,col});
-                 }
-               }
+                for(int i=0;i<4;i++)
+                {
+                    int ur=row+r[i];
+                    int uc=col+c[i];
+                    if(ur>=0 and ur<n and uc>=0 and uc<m and grid[ur][uc]==1)
+                    {
+                        grid[ur][uc]=2;
+                        freshOranges--;
+                        q.push({ur,uc});
+                        flag=true;
+                    }
+                }
             }
             if(flag==true)
-            count++;
+            time++;
         }
-        return (freshOranges==0)?count:-1;
-}
-
+        cout<<"freshOranges"<<freshOranges;
+        return (freshOranges==0) ? time : -1;
+    }
 Note -:
 return (freshOranges==0)?count:-1;
 means -> at last if we are able to convert all the freshorange to rotten in that case freshOranges=0 

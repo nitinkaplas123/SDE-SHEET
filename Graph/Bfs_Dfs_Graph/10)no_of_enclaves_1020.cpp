@@ -102,3 +102,59 @@ int numEnclaves(vector<vector<int>>& grid) {
         }
         return count;
     }
+
+
+Solution 2-:
+Steps-:
+1)Without visited array.
+
+Code-:
+int numEnclaves(vector<vector<int>>& grid) {
+        int n=grid.size();
+        int m=grid[0].size();
+        
+        queue<pair<int,int>>q;
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if(i==0 || i==n-1 || j==0 || j==m-1)
+                {
+                    if(grid[i][j]==1)
+                    {
+                       grid[i][j]=0;
+                       q.push({i,j});
+                    }
+                }
+            }
+        }
+        
+        int r[4]={-1,1,0,0};
+        int c[4]={0,0,1,-1};
+        while(!q.empty())
+        {
+            int row=q.front().first;
+            int col=q.front().second;
+            q.pop();
+
+            for(int i=0;i<4;i++)
+            {
+                int ur=row+r[i];
+                int uc=col+c[i];
+                if(ur>=0 and ur<n and uc>=0 and uc<m and grid[ur][uc]==1)
+                {
+                    grid[ur][uc]=0;
+                    q.push({ur,uc});
+                }
+            }
+        }
+
+        int count=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]==1)
+                count++;
+            }
+        }
+        return count;
+}
