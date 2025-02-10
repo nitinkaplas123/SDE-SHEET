@@ -3,6 +3,7 @@
         "complex": "cpp",
         "iosfwd": "cpp",
         "string": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "vector": "cpp"
     }
 }
