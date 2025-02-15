@@ -7,17 +7,17 @@ Steps-:
 
 Code-: Time->O(n2)
 int height(TreeNode* root)
-    {
+{
         if(root==NULL) return 0;
         return 1+max(height(root->left),height(root->right));
-    }
-    bool isBalanced(TreeNode* root) {
+}
+bool isBalanced(TreeNode* root) {
         if(root==NULL) return 1;
         if(root->left==NULL and root->right==NULL) return 1;
         int left=height(root->left);
         int right=height(root->right);
         return (abs(left-right)<=1 and isBalanced(root->left) and isBalanced(root->right));
-    }
+}
 
 
 Solution 2-:

@@ -5,6 +5,7 @@ private:
 
     unordered_map<int,list<vector<int>>::iterator>m;
     map<int,list<vector<int>>>freq;
+    
     public:
     LFUCache(int capacity) {
         cap=capacity;

@@ -1,3 +1,7 @@
+Question -:
+1)If there is n element then we have n! permutation of it.
+
+
 Solution 1-:
 Steps-:
 1)Here we are using visited array and v as a vector.

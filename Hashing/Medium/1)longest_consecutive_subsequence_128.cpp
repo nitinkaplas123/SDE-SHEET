@@ -30,3 +30,35 @@ int longestConsecutive(vector<int>&arr) {
         }
         return ans;
 }
+
+Solution 2-:
+Steps-:
+1)Using sorting.
+2)if diff=1 its consecttive.
+  if diff=0 its continue. means donot break the consecutive just ignore that guy.
+
+Time->O(Nlog(N))
+Space->O(1)
+Code-:
+int longestConsecutive(vector<int>& nums) {
+         int n=nums.size();
+         if(n==0) return 0;
+         sort(nums.begin(),nums.end());
+
+         int ans=0;
+         int count=1;
+         for(int i=1;i<n;i++)
+         {
+             if(nums[i]-nums[i-1]==1)
+             count++;
+             else if(nums[i]-nums[i-1]==0)
+             continue;
+             else
+             {
+                ans=max(ans,count);
+                count=1;
+             }
+         }
+         ans=max(ans,count);
+         return ans;
+}

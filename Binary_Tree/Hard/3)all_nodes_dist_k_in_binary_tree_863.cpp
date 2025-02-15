@@ -12,7 +12,7 @@ Steps-:
 
 Code-: Time->O(N)
 void parent(TreeNode* root,unordered_map<TreeNode*,TreeNode*>&m)
-    {
+{
         
         queue<TreeNode*>q;
         q.push(root);
@@ -34,8 +34,8 @@ void parent(TreeNode* root,unordered_map<TreeNode*,TreeNode*>&m)
                 q.push(curr->right);
             }
         }
-    }
-    vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
+}
+vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         vector<int>v;
 
         //parent 

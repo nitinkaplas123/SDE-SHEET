@@ -51,7 +51,6 @@ bool bfs(vector<vector<int>>& graph,int i,vector<int>&color,queue<int>q,vector<i
        q.push(i);
        while(!q.empty())
        {
-
             int node=q.front();
             visited[node]=true;
             q.pop();
@@ -115,7 +114,7 @@ bool dfs(vector<vector<int>>& graph,int node,int col,vector<int>&color,vector<in
 bool isBipartite(vector<vector<int>>& graph) {
         int n=graph.size();
         vector<int>color(n,-1);
-        queue<int>q;
+       
        
         vector<int>visited(n,false);
        

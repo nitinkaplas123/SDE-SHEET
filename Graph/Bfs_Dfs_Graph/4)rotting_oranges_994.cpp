@@ -59,13 +59,11 @@ int orangesRotting(vector<vector<int>>& grid) {
         while(q.empty()==false)
         {
             int size=q.size();
-            bool flag=false;
             for(int i=0;i<size;i++)
             {
                 int row=q.front().first;
                 int col=q.front().second;
                 q.pop();
-
                 for(int i=0;i<4;i++)
                 {
                     int ur=row+r[i];
@@ -75,16 +73,16 @@ int orangesRotting(vector<vector<int>>& grid) {
                         grid[ur][uc]=2;
                         freshOranges--;
                         q.push({ur,uc});
-                        flag=true;
+                        if(freshOranges==0) return time+1;
                     }
                 }
             }
-            if(flag==true)
             time++;
         }
-        cout<<"freshOranges"<<freshOranges;
         return (freshOranges==0) ? time : -1;
-    }
+}
+
+
 Note -:
 return (freshOranges==0)?count:-1;
 means -> at last if we are able to convert all the freshorange to rotten in that case freshOranges=0 

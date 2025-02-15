@@ -79,3 +79,4 @@ int countPaths(int n, vector<vector<int>>& roads) {
         }
         return ways[n-1]%mod;
 }
+

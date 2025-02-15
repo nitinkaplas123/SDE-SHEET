@@ -3,21 +3,21 @@ Steps-:
 
 
 Code-:
- vector<int> parent;
-    int find_set(int x){
-        if(parent[x] == x) return x;
-        return parent[x] = find_set(parent[x]);
-    }
+vector<int> parent;
+int find_set(int x){
+    if(parent[x] == x) return x;
+    return parent[x] = find_set(parent[x]);
+}
 
-    bool make_union(int x, int y){
+bool make_union(int x, int y){
         int a = find_set(x);
         int b = find_set(y);
         if(a == b) return false;
         parent[b] = a;
         return true;
-    }
+}
 
-    int minSwapsCouples(vector<int>& row) {
+int minSwapsCouples(vector<int>& row) {
        int n = row.size();
        if(n == 0) return 0;
        parent.resize(n);
@@ -30,4 +30,4 @@ Code-:
            if(make_union(i, i+1)) count++;
        }
        return count;
-    }
+}

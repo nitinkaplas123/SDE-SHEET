@@ -25,10 +25,6 @@ Code-: Time->O(n) Space ->O(n)
     }
 
 
-
-
-
-
 Solution 2-:
 Steps-:
 1)Find the count diff of nodes between both linked list

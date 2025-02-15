@@ -38,3 +38,4 @@ int equalPartition(int N, int arr[])
         else
         return isSubsetSum(arr,sum/2,N);
 }
+

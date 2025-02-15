@@ -74,6 +74,8 @@ Steps-:
 4)In the end we update the dist array and have a sum and return it.
 
 
+Time->O(Elog(V)) or in worst case -> O(Elog(E))
+Space->O(V+E).
 
 Code-:
 int spanningTree(int V, vector<vector<int>> adj[])

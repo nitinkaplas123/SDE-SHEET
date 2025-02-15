@@ -72,6 +72,6 @@ int findKRotation(int arr[], int n) {
 	       }
 	   }
 	   return index;
-	}
+}
 
 

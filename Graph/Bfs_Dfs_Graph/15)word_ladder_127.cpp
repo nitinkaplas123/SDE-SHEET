@@ -1,5 +1,42 @@
 https://www.geeksforgeeks.org/problems/word-ladder-ii/1
 
+
+Solution 1-:
+Steps-:
+1) Here we use the same idea of word ladder1.
+2) But here question i want all the paths from start to end.
+3) So we cannot erase immedaitely.
+
+startWord = "der", targetWord = "dfs",
+wordList = {"des","der","dfr","dgt","dfs"}
+
+
+          der 
+
+     dfr        des
+
+dfs                  dfs 
+
+
+Level 1.
+4) 1. So here when we are using der 
+      and we get dfr so donot delete immediately.
+   2. then using der 
+      we have des. 
+
+Level 2 -> dfr -> dfs 
+           des -> dfs. 
+
+So here if we see using dfr -> we got dfs so if we delete dfs from set now.
+  then how we can make another path which is from 
+  des-> dfs (at that time our set said we donot have dfs.)
+
+
+Note -: Delete level by level from set so that we can make all possible path.
+
+
+
+Time->O()
 Code-:
 vector<vector<string>> findSequences(string beginWord, string endWord, vector<string>& wordList) {
        vector<vector<string>>ans;
@@ -9,12 +46,10 @@ vector<vector<string>> findSequences(string beginWord, string endWord, vector<st
        queue<vector<string>>q;
        q.push({beginWord});
        
-       int level=0;
        if(s.find(beginWord)!=s.end()) s.erase(beginWord);
        
        while(!q.empty())
        {
-           
            int size=q.size();
            for(int i=0;i<size;i++)
            {
