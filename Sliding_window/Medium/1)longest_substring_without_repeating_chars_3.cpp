@@ -61,23 +61,26 @@ Steps-:
 Code-: Time->O(N) Space->O(N)
 int lengthOfLongestSubstring(string s) {
         int n=s.length();
-        unordered_set<char>set;
-        int i=0;
-        int j=0;
         int ans=0;
-        while(j<n)
+        unordered_set<char>set;
+        int low=0;
+        int high=0;
+        while(high<n)
         {
-           while(set.find(s[j])!=set.end())
-           {
-              set.erase(s[i]);
-              i++;
-           }
-           set.insert(s[j]);
-           ans=max(ans,j-i+1);
-           j++;
+            if(set.find(s[high])==set.end())
+            {
+                set.insert(s[high]);
+                ans=max(ans,high-low+1);
+                high++;
+            }
+            else
+            {
+               set.erase(s[low]);
+               low++;
+            }
         }
         return ans;
-}
+    }
 
 
 

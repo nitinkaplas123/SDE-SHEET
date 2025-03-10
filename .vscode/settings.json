@@ -5,6 +5,13 @@
         "string": "cpp",
         "variant": "cpp",
         "vector": "cpp",
-        "ios": "cpp"
+        "ios": "cpp",
+        "ratio": "cpp",
+        "limits": "cpp",
+        "algorithm": "cpp",
+        "__bit_reference": "cpp",
+        "bitset": "cpp",
+        "unordered_map": "cpp",
+        "__locale": "cpp"
     }
 }

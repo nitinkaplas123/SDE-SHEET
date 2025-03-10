@@ -31,6 +31,16 @@ note-:
    ans.push_back(num[i]);
 
 
+// Input
+// num =
+// "9"
+// k =
+// 1
+
+// Use Testcase
+// Output
+// "9"
+Why we need one more while loop.
 Code-: Time->O(N) Space->O(1)
 string removeKdigits(string num, int k) {
         int n=num.length();
@@ -45,6 +55,7 @@ string removeKdigits(string num, int k) {
             if(ans.length() || num[i]!='0')
             ans.push_back(num[i]);
         }
+        
         
         while(ans.size()!=0 and k)
         {

@@ -43,3 +43,35 @@ ListNode* reverseKGroup(ListNode* head, int k)
          head->next=reverseKGroup(curr,k);
          return prev;
 }
+
+Java -:
+class Solution {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode curr = head;
+        
+        // Check if there are k nodes to reverse
+        for (int i = 0; i < k; i++) {
+            if (curr == null) return head;
+            curr = curr.next;
+        }
+
+        // Reverse k nodes
+        ListNode prev = null;
+        ListNode next = null;
+        curr = head;
+        for (int i = 0; i < k; i++) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        // Recursively reverse the remaining nodes
+        if (curr != null) {
+            head.next = reverseKGroup(curr, k);
+        }
+
+        // prev is the new head of the reversed group
+        return prev;
+    }
+}

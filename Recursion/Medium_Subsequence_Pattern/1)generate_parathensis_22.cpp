@@ -9,7 +9,8 @@ stopping case-:
 1)when open=n and close==n means we make a valid parathesis 
   lets add it into vector of ans.
 
-Code-: Time->
+The problem is similar to generating all possible sequences of 2n characters, where each character can be either '(' or ')'.
+Code-: Time-> O(2^(2n))  ->O(4^n) 
 void helper(int open,int close,int n,string str,vector<string>&ans)
 {
         if(open==n and close==n)

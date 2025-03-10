@@ -191,4 +191,46 @@ int solve(int n, int k, vector<int> &stalls) {
 
 
 
+Solution :
 
+Code:
+bool isValid(vector<int>&stalls,int k,int value)
+{
+        int n=stalls.size();
+        int count=1;
+        int curr=1;
+        int prev=0;
+        
+        while(curr<n and count<k)
+        {
+            if(stalls[curr]-stalls[prev]>=value)
+            {
+                count++;
+                prev=curr;
+                curr++;
+            }
+            else
+            curr++;
+        }
+        return (count==k);
+}
+int aggressiveCows(vector<int> &stalls, int k) {
+        int n=stalls.size();
+        sort(stalls.begin(),stalls.end());
+        int low=1;
+        int high=stalls[n-1]-stalls[0];
+        
+        int ans=1;
+        while(low<=high)
+        {
+            int mid=(low+high)/2;
+            if(isValid(stalls,k,mid))
+            {
+                ans=mid;
+                low=mid+1;
+            }
+            else
+            high=mid-1;
+        }
+        return ans;
+}

@@ -51,9 +51,9 @@ class MinHeap{
     
     void minHeapify(int i) 
     { 
-    int lt = left(i); 
-    int rt = right(i); 
-    int smallest = i; 
+       int lt = left(i); 
+       int rt = right(i); 
+       int smallest = i; 
     if (lt < size && arr[lt] < arr[i]) 
         smallest = lt; 
     if (rt < size && arr[rt] < arr[smallest]) 

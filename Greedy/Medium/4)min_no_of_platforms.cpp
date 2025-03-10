@@ -63,3 +63,43 @@ int findPlatform(vector<int>& arr, vector<int>& dep) {
         }
         return maxx;
 }
+
+
+
+Solution 2-:
+
+
+arr[i] ->       900      1000
+
+
+arr[j] ->  800                 1100
+
+if(arr[i]>=arr[j] and dep[j]>=arr[i])
+temp++;
+
+
+Code-:
+ int findPlatform(vector<int>& arr, vector<int>& dep) {
+       // plat_needed indicates number of platforms
+       // needed at a time
+       int n=arr.size();
+       int ans = 1;
+    
+       // Run a nested for-loop to find the overlap
+       for (int i = 0; i < n; i++) {
+    
+           // Initially one platform is needed
+           int temp = 1;
+           for (int j = 0; j < n; j++) {
+               if (i != j)
+                   // Increment plat_needed when there is an
+                   // overlap
+                   if (arr[i] >= arr[j] && dep[j] >= arr[i])
+                       temp++;
+           }
+    
+           // Update the result
+           ans = max(temp, ans);
+       }
+       return ans;
+    }

@@ -9,6 +9,7 @@ stopping case-:
 1)when open=n and close==n means we make a valid parathesis 
   lets add it into vector of ans.
 
+Catalan Number: (2n)!/(n+1)! n!
 Code-:
 void helper(int open,int close,string str,int n,vector<string>&ans)
 {

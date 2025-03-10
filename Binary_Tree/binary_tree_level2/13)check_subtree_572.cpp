@@ -25,3 +25,8 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot)
       return 1;
       return isSubtree(root->left,subRoot) || isSubtree(root->right,subRoot);
 }
+
+
+Solution 2-: 
+
+pending.

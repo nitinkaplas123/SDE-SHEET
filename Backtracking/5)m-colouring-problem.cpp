@@ -22,7 +22,9 @@ for eg. v=4 and m=3
 
         f(0,4,)
 
-
+In the worst case, the DFS tree has a depth of N, and at each step, we have M choices.
+The function isValid() runs O(N) per node.
+Total Complexity  -> M^V *N 
 
 
 

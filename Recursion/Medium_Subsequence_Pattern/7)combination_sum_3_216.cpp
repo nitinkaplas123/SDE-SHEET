@@ -43,7 +43,8 @@ vector<vector<int>> combinationSum3(int k, int n) {
 Solution 2-:
 Steps-:
 1)without using nums array (1->9)
-
+Time Complexity: O(C(9, k) * k)
+Space Complexity: O(C(9, k) * k)
 
 Code-:
 void helper(int index,int target,vector<int>&v1,vector<vector<int>>&ans,int len)

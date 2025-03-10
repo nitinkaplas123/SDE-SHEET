@@ -2,6 +2,7 @@ Solution 1-:
 Steps-:
 1)using 2 for loops.
 2)Make all possible container.
+
 Code-:
 int maxArea(vector<int>& height) {
         int n=height.size();
@@ -17,7 +18,7 @@ int maxArea(vector<int>& height) {
             }
         }
         return maxWater;
-    }
+}
 
 
 Solution 2-:

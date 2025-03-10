@@ -4,8 +4,8 @@ Steps-:
 2)add when i==size of level of tree  (i==n)
 
 Code-:
-oid helper(TreeNode* root,vector<int>&v)
-    {
+void helper(TreeNode* root,vector<int>&v)
+{
         queue<TreeNode*>q;
         q.push(root);
         while(q.empty()==false)
@@ -23,14 +23,14 @@ oid helper(TreeNode* root,vector<int>&v)
                 q.push(curr->right);
             }
         }
-    }
-    vector<int> rightSideView(TreeNode* root) {
+}
+vector<int> rightSideView(TreeNode* root) {
         vector<int>v;
         if(root==NULL)
         return v;
         helper(root,v);
         return v;
-    }
+}
 
 
 
