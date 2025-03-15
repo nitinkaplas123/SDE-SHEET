@@ -98,7 +98,7 @@ here we dont have these number which i change.
           4 
      1       3
                 0  0
-
+  2
 ###1 find the number where the break of mountain is.
  0 1 2 3 4 5 6
 [2,1,5,4,3,0,0]

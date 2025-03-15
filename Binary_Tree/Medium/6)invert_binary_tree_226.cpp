@@ -22,3 +22,24 @@ TreeNode* invertTree(TreeNode* root) {
         helper(root);
         return root;
 }
+
+
+java Code-:
+class Solution {
+    private void helper(TreeNode root) {
+        if (root == null) return;
+
+        helper(root.left);
+        helper(root.right);
+
+        // Swap left and right children
+        TreeNode temp = root.left;
+        root.left = root.right;
+        root.right = temp;
+    }
+
+    public TreeNode invertTree(TreeNode root) {
+        helper(root);
+        return root;
+    }
+}

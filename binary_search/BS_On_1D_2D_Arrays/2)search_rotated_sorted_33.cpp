@@ -37,7 +37,7 @@ Steps-:
 
 Code-: Time->O(logn)
 
- int search(vector<int>& nums, int target) {
+int search(vector<int>& nums, int target) {
         int n=nums.size();
         int low=0;
         int high=n-1;
@@ -63,4 +63,4 @@ Code-: Time->O(logn)
             }
         }
         return -1;
-    }
+}

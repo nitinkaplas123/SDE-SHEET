@@ -1,3 +1,66 @@
+A matrix -> []2*1     B matrix ->[]1*3    -> Resultant matrix -> []2*3
+
+How many multiplications -> 2*1*3   (1 is the common)
+
+
+
+  
+  
+  0 1 2 3
+ [2,1,3,4]
+
+ M1=(2*1) 
+ M2=(1*3)
+ M3=(3*4)
+ 
+
+ K=1 to K=2
+
+ means 2 cut 
+
+ 1)k=1 
+
+ M1*(M2*M3) 
+
+     1.M1 -> single -> 0
+
+     2. (M2*M3)  [1*3]   [3*4]
+
+        multiplication -> [1*3*4] -> 12 
+        result matrix  -> [1*4]
+
+     3. (M1) * (M2*M3)
+        [2*1] * [1*4]
+        [2*1*4]
+        [8]
+
+     0 + 12 + 8 
+     20
+
+ 2) K=2 
+    
+    (M1*M2)*M3
+
+    1. (M1*M2) (2*1) (1*3)
+       
+        multiplication -> [2*1*3]  -> 6
+        result matrix  -> [2*3]
+
+    2. M3 => 0 
+
+    3. (M1*M2) * (M3)
+        [2*3]  * [3*4]
+        [2*3*4] -> 24
+
+    Addition -> 6+0+24 
+             -> 30 
+
+
+min(20,30)
+
+-> 20.
+
+ 
         0  1  2  3  4 
 arr -> [10,20,30,40,50]
 There are n-1 matrixs.

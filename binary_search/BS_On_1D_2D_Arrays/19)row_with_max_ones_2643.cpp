@@ -23,4 +23,4 @@ vector<int> rowAndMaximumOnes(vector<vector<int>>& mat) {
             }
         }
         return {index,ans};
-    }
+}
