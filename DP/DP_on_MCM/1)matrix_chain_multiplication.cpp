@@ -16,20 +16,32 @@ How many multiplications -> 2*1*3   (1 is the common)
 
  K=1 to K=2
 
+ 1)k=1  -> (M1)*(M2*M3) 
+           [20]
+
+ 2)K=2 ->   (M1*M2)*M3
+       -> 30
+
+
+O/P -: 20
+
  means 2 cut 
 
  1)k=1 
 
  M1*(M2*M3) 
 
-     1.M1 -> single -> 0
+ (M1) * (M2*M3) 
+ (2*1) * (1*4)  => (2*1*4) ->    arr[i-1]*arr[k]*arr[j]
 
-     2. (M2*M3)  [1*3]   [3*4]
+     1.M1 -> single -> 0    -> f(i,k) -> f(1,1) -> 0 
 
-        multiplication -> [1*3*4] -> 12 
+     2. (M2*M3)  [1*3]   [3*4]    -> f(k+1,j) -> f(2,3)   -> [1*3] [3*4] -> [1*3*4] => 12
+
+        multiplication -> [1*3*4] -> 12    -> [1*3] [3*4] -> [1*3*4] => 12
         result matrix  -> [1*4]
 
-     3. (M1) * (M2*M3)
+     3. (M1) * (M2*M3)   -> arr[i-1]*arr[k]*arr[j]
         [2*1] * [1*4]
         [2*1*4]
         [8]

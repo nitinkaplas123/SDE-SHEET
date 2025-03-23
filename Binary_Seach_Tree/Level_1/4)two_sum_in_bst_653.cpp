@@ -1,6 +1,7 @@
 Solution 1-:
 Steps-:
 1)store the node value in inorder fashion.
+2)Usinfg 2 pointer we can check.
 
 Time->  O(N)
 Space ->O(N)
