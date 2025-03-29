@@ -31,7 +31,7 @@ int largestRectangleArea(vector<int>& heights) {
             res=max(res,sum);
         }
         return res;
-    }
+}
 
 
 
@@ -104,7 +104,7 @@ Steps-:
 
 
 Code-: Time->O(N) Space->O(N)
- int largestRectangleArea(vector<int>& heights) {
+int largestRectangleArea(vector<int>& heights) {
         int n=heights.size();
         stack<int>st;
         st.push(0);
@@ -133,6 +133,6 @@ Code-: Time->O(N) Space->O(N)
             ans=max(ans,val);
         }
         return ans;
-    }
+}
 
   

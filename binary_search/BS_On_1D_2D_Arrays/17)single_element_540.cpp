@@ -95,7 +95,7 @@ int singleNonDuplicate(vector<int>& nums) {
             }
         }
         return -1;
-    }
+}
 
 
 

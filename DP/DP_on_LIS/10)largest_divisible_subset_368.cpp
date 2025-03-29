@@ -31,7 +31,7 @@ Steps-:
    then automatically i can say that 4 is also divisible by 1.
 
    Similarily -:
-   if 8 is divisible by 4 then 8 is also divisible by 4 and 1. -> No need to check that.
+   if 8 is divisible by 4 then 8 is also divisible by 2 and 1. -> No need to check that.
 
 2)Do the same steps what we did in printing the lis.
   if(nums[i]>nums[j])

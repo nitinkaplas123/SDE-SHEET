@@ -8,3 +8,4 @@ TreeNode* insertIntoBST(TreeNode* root, int val)
         root->left=insertIntoBST(root->left,val);
         return root;
 }
+

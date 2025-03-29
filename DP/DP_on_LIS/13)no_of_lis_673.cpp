@@ -37,6 +37,7 @@ int findNumberOfLIS(vector<int>& nums) {
         vector<int>count(n,1);
         int maxx=1;
         int index=0;
+        
         for(int i=1;i<n;i++)
         {
             for(int j=0;j<i;j++)
@@ -55,6 +56,7 @@ int findNumberOfLIS(vector<int>& nums) {
             if(maxx<temp[i])
             maxx=temp[i];
         }
+
         int ans=0;
         for(int i=0;i<n;i++)
         {

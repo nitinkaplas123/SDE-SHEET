@@ -60,6 +60,7 @@ int binarySearch(vector<int>arr,int low,int high,int x)
     }
     return -1;
 }
+
 int helper(vector<int>v,int x)
 {
     // 0th position case
@@ -79,6 +80,7 @@ int helper(vector<int>v,int x)
     
     return binarySearch(v,low+1,high-1,x);
 }
+
 int main()
 {
 	vector<int>v{1,10,15,20,40,60,80,100,200,500,1000};

@@ -94,4 +94,4 @@ int findDuplicate(vector<int>& nums) {
            return i;
         }
         return -1;
-    }
+}

@@ -13,8 +13,8 @@ here solve function go to the depth of tree -> O(k)
 Time ->O(N*K)
 
 int count=0;
-    bool solve(Node* root,int k)
-    {
+bool solve(Node* root,int k)
+{
         if(root==NULL) return false;
         
         if(k==0)
@@ -26,9 +26,9 @@ int count=0;
         int right=solve(root->right,k-1);
         
         return (left || right);
-     }
-    void helper(Node* root,int k)
-    {
+}
+void helper(Node* root,int k)
+{
         if(root==NULL) return ;
         
         if(solve(root,k))
@@ -36,12 +36,12 @@ int count=0;
         
         helper(root->left,k);
         helper(root->right,k);
-    }
-    int printKDistantfromLeaf(Node* root, int k)
-    {
+}
+int printKDistantfromLeaf(Node* root, int k)
+{
     	 helper(root,k);
     	 return count;
-    }
+}
 
 
 Solution 2-:
@@ -67,7 +67,7 @@ int height(Node* root)
 }
 
 void helper(Node* root,Node* arr[],int count,int k)
-    {
+{
         if(root==NULL) return ;
         arr[count]=root;
         
@@ -80,9 +80,9 @@ void helper(Node* root,Node* arr[],int count,int k)
         
         helper(root->left,arr,count+1,k);
         helper(root->right,arr,count+1,k);
-    }
-    int printKDistantfromLeaf(Node* root, int k)
-    {
+}
+int printKDistantfromLeaf(Node* root, int k)
+{
     	int maxx=height(root);
     	Node* arr[maxx];
     	int count=0;

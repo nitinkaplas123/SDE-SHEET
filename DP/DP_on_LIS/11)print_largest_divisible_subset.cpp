@@ -41,7 +41,7 @@ vector<int> largestDivisibleSubset(vector<int>&nums) {
         {
             for(int j=0;j<i;j++)
             {
-                if( (nums[j]%nums[i]==0))
+                if((nums[j]%nums[i]==0))
                 {
                     if(temp[i]<1+temp[j])
                     {

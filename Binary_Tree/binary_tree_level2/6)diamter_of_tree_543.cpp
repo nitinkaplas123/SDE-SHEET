@@ -5,10 +5,10 @@ Steps-:
 
 Code-: Time->O(n2) Space ->O(1)  there is only space using for recursion
 int height(TreeNode* root)
-    {
+{
         if(root==NULL) return 0;
         return 1+max(height(root->left),height(root->right));
-    }
+}
     int diameterOfBinaryTree(TreeNode* root) {
         if(root==NULL) return 0;
         int left=height(root->left);
@@ -16,7 +16,7 @@ int height(TreeNode* root)
 
         return max(left+right,max(diameterOfBinaryTree(root->left),
                                   diameterOfBinaryTree(root->right)));
-    }
+}
 
 
 

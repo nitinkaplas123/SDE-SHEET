@@ -5,11 +5,11 @@
  3)find lcs.
 
 int helper(string s1,string s2)
-    {
+{
         int n=s1.length();
         int m=s2.length();
         
-        vector<int>prev(m+1,0);
+       vector<int>prev(m+1,0);
        vector<int>curr(m+1,0);
        for(int i=1;i<=n;i++)
        {
@@ -23,11 +23,11 @@ int helper(string s1,string s2)
            prev=curr;
        }
        return curr[m];
-    }
-    int longestPalinSubseq(string A) 
-    {
+}
+int longestPalinSubseq(string A) 
+{
         string s=A;
         reverse(A.begin(),A.end());
-        
+
         return helper(s,A);
-    }
+}

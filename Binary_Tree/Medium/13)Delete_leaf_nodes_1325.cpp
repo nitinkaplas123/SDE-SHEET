@@ -1,0 +1,14 @@
+Solution 1:
+
+
+Code-:
+TreeNode* removeLeafNodes(TreeNode* root, int target) {
+        if(root==NULL) return NULL;
+        root->left=removeLeafNodes(root->left,target);
+        root->right=removeLeafNodes(root->right,target);
+
+        if(root->left==NULL and root->right==NULL and root->val==target)
+        return NULL;
+        else
+        return root;
+}

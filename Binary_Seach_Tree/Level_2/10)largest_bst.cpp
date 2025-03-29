@@ -114,7 +114,8 @@ End -> return helper(root).size();
 
 
 Code-: Time ->O(N)
-class NodeValue{
+class NodeValue
+{
     public:
     int mini,maxi,size;
     NodeValue(int mini,int maxi,int size)

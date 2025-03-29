@@ -74,14 +74,14 @@ O/p -: 2->1
 4.  return new_head.
     which is 2.
 
-ListNode* reverseList(ListNode* head) {
-        if(head==NULL || head->next==NULL) return head;
+ListNode* reverseList(ListNode* head) 
+{
+    if (head == NULL || head->next == NULL)
+    return head;
 
-        ListNode* new_head=reverseList(head->next);
-        ListNode* head_next=head->next;
-        head_next->next=head;
-        head->next=NULL;
-        return new_head;
+    ListNode* newHead = reverseList(head->next);
+    head->next->next = head;
+    head->next = NULL;
+
+    return newHead;
 }
-
-

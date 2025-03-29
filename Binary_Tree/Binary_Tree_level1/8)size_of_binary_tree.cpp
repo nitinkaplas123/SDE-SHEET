@@ -17,7 +17,7 @@ Solution 2-:
 Using level order traversal
 
 Code-:
- int countNodes(TreeNode* root) {
+int countNodes(TreeNode* root) {
         if(root==NULL) return 0;
         queue<TreeNode*>q;
         q.push(root);
@@ -33,4 +33,4 @@ Code-:
             q.push(curr->right);
         }
         return count;
-    }
+}

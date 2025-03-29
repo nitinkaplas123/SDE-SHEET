@@ -34,9 +34,10 @@ void parent(TreeNode* root,unordered_map<TreeNode*,TreeNode*>&m)
               q.push(curr->right);
             }   
         }
-    }
-    void target_Node(TreeNode* root,TreeNode* &target_node,int start)
-    {
+}
+
+void target_Node(TreeNode* root,TreeNode* &target_node,int start)
+{
         if(root==NULL) return ;
         if(root->val==start)
         {
@@ -45,8 +46,8 @@ void parent(TreeNode* root,unordered_map<TreeNode*,TreeNode*>&m)
         }
         target_Node(root->left,target_node,start);
         target_Node(root->right,target_node,start);
-    }
-    int amountOfTime(TreeNode* root, int start) {
+}
+int amountOfTime(TreeNode* root, int start) {
         //parent array
         unordered_map<TreeNode*,TreeNode*>m;
         parent(root,m);

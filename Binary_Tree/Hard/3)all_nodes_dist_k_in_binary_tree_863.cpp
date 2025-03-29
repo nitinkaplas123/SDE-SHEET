@@ -52,7 +52,6 @@ vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         while(dist<k)
         {
            int size=q.size();
-
            for(int i=0;i<size;i++)
            {
               TreeNode* curr=q.front();
@@ -84,4 +83,4 @@ vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
             v.push_back(val);
         }
         return v;
-    }
+  }

@@ -94,4 +94,4 @@ int trap(vector<int>& height) {
            ans+=rmax-height[high--];
        }
        return ans;
-    }
+}

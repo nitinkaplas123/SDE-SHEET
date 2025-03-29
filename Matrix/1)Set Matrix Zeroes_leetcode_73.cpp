@@ -33,7 +33,7 @@ void setZeroes(vector<vector<int>>& matrix) {
             for(int i=0;i<n;i++)
             matrix[i][y]=0;
         }
-    }
+}
 
 
 

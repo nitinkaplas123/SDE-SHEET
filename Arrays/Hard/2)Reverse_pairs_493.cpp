@@ -132,7 +132,6 @@ void merge(vector<int>&arr,int low,int mid,int high)
         {
             arr[k++]=right[j++];
         }
-       
 }   
 int countPairs(vector<int>& arr, int low, int mid, int high) 
 {

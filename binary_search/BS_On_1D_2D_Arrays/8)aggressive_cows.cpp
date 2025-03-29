@@ -57,7 +57,8 @@ stalls = [10 1 2 7 5]
 
 
 Code-: Time->O(N*10^9)
-int solve(int n, int k, vector<int> &stalls) {
+int solve(int n, int k, vector<int> &stalls) 
+{
        sort(stalls.begin(),stalls.end());    n log(10^5)
        int ans=1;
        while(1)          O(10^9)
@@ -82,7 +83,7 @@ int solve(int n, int k, vector<int> &stalls) {
            break;
        }
        return ans-1;
-    }
+}
 
                                                             
 
@@ -185,8 +186,6 @@ int solve(int n, int k, vector<int> &stalls) {
        }
        return res;
 }
-
-
 
 
 
