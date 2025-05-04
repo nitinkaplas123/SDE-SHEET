@@ -6,7 +6,7 @@ Steps-:
 2)Always n1<=n2 
   if(n1>n2) swap(num1,nums2).
 
-Time->O()
+Time->O(log(min(n1,n2))) because we are applying binary search on min no. of array.
 Code-:
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
         int n1=nums1.size();

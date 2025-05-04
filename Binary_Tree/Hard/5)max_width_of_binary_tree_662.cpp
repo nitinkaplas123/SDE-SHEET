@@ -41,7 +41,6 @@ int widthOfBinaryTree(TreeNode* root) {
                 
                 if(curr->right)
                 q.push({curr->right,(long long)2*h+2});
-                
             }
         }
         return ans;

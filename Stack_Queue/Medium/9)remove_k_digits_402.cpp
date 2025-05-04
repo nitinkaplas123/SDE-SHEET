@@ -31,6 +31,45 @@ note-:
    ans.push_back(num[i]);
 
 
+Steps:
+1)Here we are using stack and the intution is same as of sol.2 which is without the stack.
+
+Time ->O(N+K)
+Space ->O(N)
+
+Code:
+string removeKdigits(string num, int k) {
+        int n=num.length();
+
+        stack<char>st;
+        for(int i=0;i<n;i++)
+        {
+            while(!st.empty() and st.top()>num[i] and k)
+            {
+                st.pop();
+                k--;
+            }
+            if(!st.empty() || num[i]!='0')
+            st.push(num[i]);
+        }
+
+        while(!st.empty() and k)
+        {
+            st.pop();
+            k--;
+        }
+
+        string ans="";
+        while(!st.empty())
+        {
+            ans+=st.top();
+            st.pop();
+        }
+        reverse(ans.begin(),ans.end());
+        return (ans=="")?"0":ans;
+    }
+
+
 // Input
 // num =
 // "9"
@@ -40,7 +79,21 @@ note-:
 // Use Testcase
 // Output
 // "9"
+
 Why we need one more while loop.
+num=> "12345"  k=2 
+
+1st loop -: ans=12345
+2nd while loop : will remove the k digits 
+
+            ans: 123
+
+
+Solution 2:
+
+Steps:
+1)Without the stack.
+
 Code-: Time->O(N) Space->O(1)
 string removeKdigits(string num, int k) {
         int n=num.length();

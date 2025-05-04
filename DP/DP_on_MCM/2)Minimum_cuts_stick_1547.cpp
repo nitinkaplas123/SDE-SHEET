@@ -10,7 +10,7 @@ Steps:
 3) Make sure cuts array is sorted.
    because when we mark the cut at suppose 4 position 
     0 1 2 3 4 5
-   [0,1,2,4,5,7]
+   [0,1,3,4,5,7]
 
    i=1 j=4 
 
@@ -118,4 +118,81 @@ int minCost(int n, vector<int>& cuts) {
             }
         }
         return dp[1][size];
+}
+
+
+
+Java :
+
+
+Solution 1:
+import java.util.*;
+
+public class Solution {
+    public static int helper(List<Integer> cuts, int i, int j) {
+        if (i > j) return 0;
+        int ans = Integer.MAX_VALUE;
+
+        for (int index = i; index <= j; index++) {
+            int cost = cuts.get(j + 1) - cuts.get(i - 1);
+            int val1 = helper(cuts, i, index - 1);
+            int val2 = helper(cuts, index + 1, j);
+            ans = Math.min(ans, cost + val1 + val2);
+        }
+        return ans;
+    }
+
+    public static int minCost(int n, int[] cutArr) {
+        List<Integer> cuts = new ArrayList<>();
+        for (int cut : cutArr) cuts.add(cut);
+
+        // Add the boundaries
+        cuts.add(0);
+        cuts.add(n);
+        Collections.sort(cuts);
+
+        return helper(cuts, 1, cuts.size() - 2);  // size-2 because last index is cuts.size()-1
+    }
+}
+
+
+
+Solution 2:
+
+import java.util.*;
+
+public class Solution {
+    public static int helper(int[][] memo, List<Integer> cuts, int i, int j) {
+        if (i > j) return 0;
+        if (memo[i][j] != -1) return memo[i][j];
+
+        int ans = Integer.MAX_VALUE;
+        for (int index = i; index <= j; index++) {
+            int cost = cuts.get(j + 1) - cuts.get(i - 1);
+            int left = helper(memo, cuts, i, index - 1);
+            int right = helper(memo, cuts, index + 1, j);
+            ans = Math.min(ans, cost + left + right);
+        }
+
+        return memo[i][j] = ans;
+    }
+
+    public static int minCost(int n, int[] cutArr) {
+        List<Integer> cuts = new ArrayList<>();
+        for (int cut : cutArr) cuts.add(cut);
+
+        cuts.add(0);
+        cuts.add(n);
+        Collections.sort(cuts);
+
+        int size = cutArr.length;
+        int[][] memo = new int[101][101];
+        
+        // Fill memo with -1
+        for (int[] row : memo) {
+            Arrays.fill(row, -1);
+        }
+
+        return helper(memo, cuts, 1, size);
+    }
 }

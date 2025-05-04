@@ -96,5 +96,4 @@ int countSquares(vector<vector<int>>& matrix) {
             }
         }
         return ans;
-       
 }

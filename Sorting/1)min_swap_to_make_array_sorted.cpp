@@ -20,9 +20,10 @@ int minSwaps(vector<int>& arr) {
     {
         int index=v[i].second;
         int val=v[i].first;
-        if(i!=index){
-        swap(v[i],v[index]);
-        count++;
+        if(i!=index)
+        {
+          swap(v[i],v[index]);
+          count++;
         }
         else
         i++;

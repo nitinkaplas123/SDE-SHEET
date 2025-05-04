@@ -99,3 +99,71 @@ vector<vector<char>> fill(int n, int m, vector<vector<char>>& mat)
         return mat;
 }
 
+
+Solution 2:
+
+Steps:
+1)In place of visited array -> O -> visited -> true 
+  we mark O -> mat[i][j]='#'.
+
+
+Time Complexity: O(N*M)
+Space Complexity: O(N*M) bcz of queue.
+
+
+Code:
+vector<vector<char>> fill(vector<vector<char>>& mat) {
+       int n=mat.size();
+       int m=mat[0].size();
+       //vector<vector<int>>visited(n,vector<int>(m,false));
+       queue<pair<int,int>>q;
+       
+       for(int i=0;i<n;i++)
+       {
+           for(int j=0;j<m;j++)
+           {
+               if((i==0 || i==n-1 || j==0 || j==m-1) and mat[i][j]=='O')
+               {
+                   //visited[i][j]=true;
+                   q.push({i,j});
+                   mat[i][j]='#';
+               }
+           }
+       }
+       
+       int r[4]={-1,1,0,0};
+       int c[4]={0,0,-1,1};
+       while(!q.empty())
+       {
+           int row=q.front().first;
+           int col=q.front().second;
+           q.pop();
+           
+           for(int i=0;i<4;i++)
+           {
+               int ur=row+r[i];
+               int uc=col+c[i];
+               if(ur>=0 and ur<n and uc>=0 and uc<m)
+               {
+                   if(mat[ur][uc]=='O')
+                   {
+                       //visited[ur][uc]=true;
+                       q.push({ur,uc});
+                       mat[ur][uc]='#';
+                   }
+               }
+           }
+       }
+       
+       for(int i=0;i<n;i++)
+       {
+           for(int j=0;j<m;j++)
+           {
+               if(mat[i][j]=='#')
+               mat[i][j]='O';
+               else 
+               mat[i][j]='X';
+           }
+       }
+       return mat;
+}

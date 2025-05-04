@@ -11,6 +11,7 @@ int climbStairs(int n) {
         return climbStairs(n-1) + climbStairs(n-2);
 }
 
+        
 
 
 Solution 2-:
@@ -81,8 +82,8 @@ int countWays(int n)
 
 Java -:
 int mod=1000000007;
-    int helper(int []memo,int n)
-    {
+int helper(int []memo,int n)
+{
        if(n<0) return 0;
        if(n==0) return 1;
        
@@ -91,13 +92,13 @@ int mod=1000000007;
        int res;
        res=helper(memo,n-1)%mod + helper(memo,n-2)%mod;
        return memo[n]=res%mod;
-    }
-    int countWays(int n)
-    {
+}
+int countWays(int n)
+{
        int []memo=new int[n+1];
        for(int i=0;i<=n;i++)
        {
            memo[i]=-1;
        }
        return helper(memo,n);
-    }
+}

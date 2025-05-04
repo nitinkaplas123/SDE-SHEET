@@ -121,3 +121,37 @@ int countDays(int days, vector<vector<int>>& meetings) {
         days-=(prevEnd-prevStart+1);
         return days;
 }
+
+
+
+Solution 4:
+Steps:
+
+1) Here start and end is ponting to ith meeting.
+2) prev is pointing to prev finished meeting.
+3) so we calculate the gap bw 2 meetings.
+4) At last we check if days>prev then add all the remaining days.
+
+
+Time Complexity: O(Nlog(N))
+Space Complexity: O(1)
+
+Code:
+int countDays(int days, vector<vector<int>>& meetings) {
+        int n=meetings.size();
+        sort(meetings.begin(),meetings.end());
+
+        int prev=0;
+        int count=0;
+        for(int i=0;i<n;i++)
+        {
+            int start=meetings[i][0];
+            int end=meetings[i][1];
+            if(prev<start)
+            count+=(start-prev-1);
+            prev=max(prev,end);
+        }
+        if(prev<days)
+        count+=days-prev;
+        return count;
+}

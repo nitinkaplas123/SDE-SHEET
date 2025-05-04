@@ -96,22 +96,25 @@ int lengthOfLongestSubstring(string s) {
  
 Code-:
 int lengthOfLongestSubstring(string s) {
-         int n=s.length();
-         int count[256]={0};
+        int n=s.length();
+        int ans=INT_MIN;
 
-         int i=0;
-         int j=0;
-         int ans=0;
-         while(j<n)
-         {
-             while(count[s[j]]>0)
-             {
-                count[s[i]]--;
-                i++;
-             }
-             count[s[j]]++;
-             ans=max(ans,j-i+1);
-             j++;
-         }
-         return ans;
+        unordered_map<int,int>m;
+        int i=0;
+        int j=0;
+        while(i<n)
+        {
+            m[s[i]]++;
+            if(m[s[i]]>1)
+            {
+                while(m[s[i]]>1)
+                {
+                    m[s[j]]--;
+                    j++;
+                }
+            }
+            ans=max(ans,i-j+1);
+            i++;
+        }
+        return (ans==INT_MIN)?0:ans;
 }

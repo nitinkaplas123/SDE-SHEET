@@ -48,3 +48,36 @@ vector<int> shortestPath(vector<vector<int>>& edges, int N,int M, int src){
        }
        return ans;
 }
+
+
+
+Solution 2:
+Steps:
+1)Remove the visited array.
+
+Code:
+vector<int> shortestPath(vector<vector<int>>& adj, int src) {
+        int n=adj.size();
+        vector<int>dist(n,-1);
+        queue<int>q;
+        
+        q.push(src);
+        dist[src]=0;
+       
+        
+        while(!q.empty())
+        {
+            int node=q.front();
+            q.pop();
+            
+            for(auto x:adj[node])
+            {
+                if(dist[x]==-1)
+                {
+                    dist[x]=1+dist[node];
+                    q.push(x);
+                }
+            }
+        }
+        return dist;
+}

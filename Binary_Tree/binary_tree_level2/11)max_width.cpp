@@ -29,7 +29,7 @@ Code-: Time->O(N) Space->O(N)
          maxi=max(maxi,size);
       }
       return maxi;
-    }
+}
 
 
 

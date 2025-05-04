@@ -25,63 +25,126 @@ b->d
 
 
 Code-:
-string findOrder(vector<string> dict, int k) {
-        int n=dict.size();
-        vector<int>adj[k];
+string alienOrder(vector<string>& words) 
+{
+        unordered_map<char, vector<char>> adj;
+        unordered_map<char, int> inDegree;
+        unordered_set<char> chars;
+
+        // Step 1: Initialize all unique characters
+        for (const string& word : words) {
+            for (char ch : word) {
+                chars.insert(ch);
+                inDegree[ch] = 0;  // Make sure every char is in inDegree
+            }
+        }
+
+        // Step 2: Build graph
+        for (int i =0;i<words.size()-1;i++) 
+        {
+            string w1 = words[i];
+            string w2 = words[i + 1];
+            int len = min(w1.size(), w2.size());
+
+            int j;
+            for (j=0;j<len;j++) 
+            {
+                if (w1[j] != w2[j]) 
+                {
+                    adj[w1[j]].push_back(w2[j]);
+                    inDegree[w2[j]]++;
+                    break;
+                }
+            }
+
+            // If word2 is a prefix of word1 and word1 is longer => invalid
+            if (j==len && w1.size() > w2.size())
+            return "";
+        }
+
+        // Step 3: Topological sort (Kahn's algorithm)
+        queue<char> q;
+        for (char ch : chars) {
+            if (inDegree[ch] == 0) q.push(ch);
+        }
+
+        string result;
+        while (!q.empty()) {
+            char ch = q.front(); q.pop();
+            result += ch;
+            for (char neighbor : adj[ch]) {
+                if (--inDegree[neighbor] == 0)
+                    q.push(neighbor);
+            }
+        }
+        // If result doesn't include all characters => cycle
+        return result.size() == chars.size() ? result : "";
+    }
+
+
+
+or
+here we change the build graph
+
+Code: 
+string alienOrder(vector<string>& words) {
+        int n=words.size();
+        unordered_map<char, vector<char>> adj;
+        unordered_map<char, int> inDegree;
+        unordered_set<char> chars;
+
+        // Step 1: Initialize all unique characters
+        for (const string& word : words) {
+            for (char ch : word) {
+                chars.insert(ch);
+                inDegree[ch] = 0;  // Make sure every char is in inDegree
+            }
+        }
+
+        // Step 2: Build graph
         for(int k=0;k<n-1;k++)
         {
-            string s1=dict[k];
-            string s2=dict[k+1];
-            
+            string word1=words[k];
+            string word2=words[k+1];
+
             int i=0;
             int j=0;
-            int n1=s1.length();
-            int n2=s2.length();
+            int n1=word1.length();
+            int n2=word2.length();
             while(i<n1 and j<n2)
             {
-                if(s1[i]!=s2[j])
-                {
-                   adj[s1[i]-'a'].push_back(s2[j]-'a');
-                   break;
-                }
-                else
+                if(word1[i]==word2[j])
                 {
                     i++;
                     j++;
                 }
+                else 
+                {
+                    adj[word1[j]].push_back(word2[j]);
+                    inDegree[word2[j]]++;
+                    break;
+                }
+            }
+            // If word2 is a prefix of word1 and word1 is longer => invalid
+            if (j == n2 && n1 > n2)
+            return "";
+        }
+
+        // Step 3: Topological sort (Kahn's algorithm)
+        queue<char> q;
+        for (char ch : chars) {
+            if (inDegree[ch] == 0) q.push(ch);
+        }
+
+        string result;
+        while (!q.empty()) {
+            char ch = q.front(); q.pop();
+            result += ch;
+            for (char neighbor : adj[ch]) {
+                if (--inDegree[neighbor] == 0)
+                    q.push(neighbor);
             }
         }
-        
-        vector<int>inDegree(k);
-        for(int i=0;i<k;i++)
-        {
-            for(auto x:adj[i])
-            {
-                inDegree[x]++;
-            }
-        }
-        
-        queue<int>q;
-        for(int i=0;i<k;i++)
-        {
-            if(inDegree[i]==0)
-            q.push(i);
-        }
-        string ans="";
-        while(!q.empty())
-        {
-            int val=q.front();
-            q.pop();
-            ans+=(val+'a');
-            
-            for(auto x:adj[val])
-            {
-                inDegree[x]--;
-                if(inDegree[x]==0)
-                q.push(x);
-            }
-        }
-        if(ans.length()!=k) return {};
-        else
-        return ans;
+        // If result doesn't include all characters => cycle
+        return result.size() == chars.size() ? result : "";
 }

@@ -48,6 +48,7 @@ int helper(int memo[201][201],vector<vector<int>>& grid,int n,int m)
 {
         if(n==0 and m==0) return grid[0][0];
         if(n<0 || m<0) return 1e9;
+
         if(memo[n][m]!=-1) return memo[n][m];
         
         return memo[n][m]=grid[n][m]+min(helper(memo,grid,n-1,m),
@@ -60,4 +61,4 @@ int minPathSum(vector<vector<int>>& grid)
         int memo[201][201];
         memset(memo,-1,sizeof(memo));
         return helper(memo,grid,n-1,m-1);
- }
+}

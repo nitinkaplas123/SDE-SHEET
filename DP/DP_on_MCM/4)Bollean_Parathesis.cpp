@@ -72,7 +72,7 @@ if(i==j)
 
 
 int helper(string &s,int i,int j,int isTrue)
-    {
+{
        if(i>j) return 0;
        if(i==j)
        {

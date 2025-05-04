@@ -1,5 +1,11 @@
-Solution 1-:
+Question:
+1. A graph is called bipartite only if every connected component inside 
+it is bipartite.
+2. If even one component is not bipartite, then the entire graph is not bipartite.
 
+
+
+Solution 1-:
 Steps-:
 1)same idea as m colouring question. 
 
@@ -124,6 +130,46 @@ bool isBipartite(vector<vector<int>>& graph) {
             {
                  if(dfs(graph,i,0,color,visited)==false)
                  return false;
+            }
+        }
+        return true;
+}
+
+
+
+Solution 3:
+Steps:
+1) Without visited array.
+   inplace of visited[i]==false, we use color[i]==-1
+
+
+
+Code:
+bool dfs(vector<vector<int>>& graph,int node,int col,vector<int>&color)
+{
+        color[node]=col;
+        for(auto x:graph[node])
+        {
+            if(color[x]==-1)
+            {
+                if(!dfs(graph,x,!col,color))
+                return false;
+            }
+            else if(color[x]==color[node])
+            return false;
+        }
+        return true;
+}
+bool isBipartite(vector<vector<int>>& graph) {
+        int V=graph.size();
+        vector<int>color(V,-1);
+
+        for(int i=0;i<V;i++)
+        {
+            if(color[i]==-1)
+            {
+                if(!dfs(graph,i,0,color))
+                return false;
             }
         }
         return true;
