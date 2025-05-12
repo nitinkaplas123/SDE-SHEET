@@ -86,6 +86,8 @@ vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInter
             }
             i++;
         }
+
+        
         ans.push_back(newInterval);
         while(i<n)
         {

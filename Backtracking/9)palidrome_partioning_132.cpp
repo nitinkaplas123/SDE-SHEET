@@ -42,3 +42,59 @@ Solution 2-:
 Steps-:
 1)
 
+
+Code:
+
+bool isPalindrome(string &s,int i,int j)
+{
+        while(i<j)
+        {
+            if(s[i]!=s[j]) return false;
+            else
+            {
+                i++;
+                j--;
+            }
+        }
+        return true;
+}
+int helper(string &s,int index,int n)
+{
+        if(index==n)
+        return 0;
+        int minCuts=INT_MAX;
+        int cuts=0;
+        for(int i=index;i<n;i++)
+        {
+            if(isPalindrome(s,index,i))
+            cuts=(1+helper(s,i+1,n));
+            minCuts=min(minCuts,cuts);
+        }
+        return minCuts;
+}
+int minCut(string s) 
+{
+        int n=s.length();
+        // int ans=helper(s,0,n);
+        // return ans-1;
+
+        vector<int>dp(n+1,0);
+        dp[n]=0;
+
+        for(int i=n-1;i>=0;i--)
+        {
+            int minCuts=INT_MAX;
+            int cuts=0;
+            int j;
+            for(j=i;j<n;j++)
+            {
+                if(isPalindrome(s,i,j))
+                {
+                   cuts=1+dp[j+1];
+                   minCuts=min(minCuts,cuts);
+                }
+            }
+            dp[i]=minCuts;
+        }
+        return dp[0]-1;
+}

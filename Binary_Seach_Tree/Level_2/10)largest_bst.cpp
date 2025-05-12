@@ -149,7 +149,6 @@ NodeValue helper(Node* root)
 int largestBst(Node *root)
 {
          return helper(root).size;
-}
 };
 
 

@@ -3,7 +3,7 @@ Steps-:
 1)Using heights of max(root->left+root->right),max(fun(root->left),fun(root->right));
 
 
-Code-: Time->O(n2) Space ->O(1)  there is only space using for recursion
+Code-: Time->O(n^2) Space ->O(1)  there is only space using for recursion
 int height(TreeNode* root)
 {
         if(root==NULL) return 0;

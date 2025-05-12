@@ -1,5 +1,83 @@
 Solution 1:
 
+d->5
+a->1
+b->2
+c->3
+
+[5,1,2,3]
+
+1)Run the loop for i->0
+  we assumed the 5 is the minFreq while making k speacil word. 
+  [5,1,2,3]
+
+  5>1 
+  removed all occuarnce of a->1
+  count=1
+
+  5>2
+  removed all occuarnce of b->2.
+  count=1+2
+
+  5>3
+  removed all occuarnce of c->3.
+  count=1+2+3
+
+  minDeletion =6 when we assume d->5 is the minOcuurance.
+
+2)1)Run the loop for i->1  
+   [5,1,2,3]  arr[i]=1
+
+   1)arr[j]-arr[i]>k
+     5-1>2
+     remove the 5-1-2 occurabce from 5 which is 2.
+     deletion=2.
+
+   2)2-1<=k.
+   no deletion needed.
+
+   3)3-1<=k
+   no deletion needed.
+
+   minDeletion=min(6,2) => 2.
+
+3)Run the loop for i->2
+4)Run the loop for i->3.
+
+
+
+Intution :
+1)we assumed the minFreq
+
+
+     min      max
+mod(freq[i]-freq[j])<=k
+
+if(freq[i]==5)
+then to satisfy the condition the max value of freq[j] is:
+freq[j]=5+k
+
+ min  max
+|5-(5+k)|<=k
+
+not more than 5+k.
+
+1)So here we assume always as we have mod 
+  freq[i] is smaller than freq[j]
+mod(freq[i]-freq[j])<=k
+
+Case1:
+if(freq[i]>freq[j]) deletion all the occurance of freq[j].
+
+Case2: 
+if(freq[j]-freq[i]>k)
+then deletion the occurance of freq[j] by 
+freq[j]-freq[i]-k.
+
+
+
+
+
 Steps:
 1) if the i value is 4 then maximum j value will be 4+k to satisfied the condition.
    only then 4-(4+k)<=k
@@ -78,38 +156,31 @@ freq: freq array where maxx we have 26 characters.
 Space : O(26).
 
 Code:
-int minimumDeletions(string word, int k) 
-{
-        int n = word.length();
-        unordered_map<char, int> m;
-
-        for (int i = 0; i < n; i++) {
-            m[word[i]]++;
-        }
-
-        vector<int> freq;
-        for (auto x : m) {
-            freq.push_back(x.second);
-        }
-
-        int minDel = INT_MAX;
-        for (int i = 0; i < freq.size(); i++) 
+int minimumDeletions(string word, int k) {
+        int n=word.length();
+        vector<int>freq(26,0);
+        for(int i=0;i<n;i++)
         {
-            int count=0;
-            for(int j=0;j<freq.size();j++)
-            {
-                if(i==j) continue;
+            freq[word[i]-'a']++;
+        }
+        
+        int minDel=INT_MAX;
+        for(int i=0;i<26;i++)
+        {
+            int deletion=0;
+           for(int j=0;j<26;j++)
+           {
+               if(i==j) continue;
 
-                if(freq[i]>freq[j])
-                count+=freq[j];
-                else
-                {
-                    int diff=freq[j]-freq[i];
-                    if(diff>k)
-                    count+=diff-k;
-                }
-            }
-            minDel=min(minDel,count);
+               if(freq[i]>freq[j])
+               deletion+=freq[j];
+               else 
+               {
+                  if(freq[j]-freq[i]>k)
+                  deletion+=(freq[j]-freq[i]-k);
+               }
+           }
+           minDel=min(minDel,deletion);
         }
         return minDel;
-}
+    }

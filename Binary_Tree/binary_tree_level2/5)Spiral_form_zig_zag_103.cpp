@@ -21,11 +21,10 @@ vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
               q.pop();
               v1.push_back(curr->val);
               
-                 if(curr->left)
-                 q.push(curr->left);
-                 if(curr->right)
-                 q.push(curr->right);
-                 
+              if(curr->left)
+              q.push(curr->left);
+              if(curr->right)
+              q.push(curr->right);
             }
             if(!flag)
             reverse(v1.begin(),v1.end());

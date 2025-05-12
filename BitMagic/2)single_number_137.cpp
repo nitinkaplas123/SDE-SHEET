@@ -22,9 +22,9 @@ Using bit magic -:
 6  -> 1 1 0
       7 3 3
 
-0th bit -> set bits -> 3    -> 0
-1st bit -> set bits -> 3    -> 0 
-2nd bit -> set bits -> 7    -> 1 at bit 2 single number ke bit is set. 
+0th bit -> set bits -> 3 %3   -> 0
+1st bit -> set bits -> 3 %3   -> 0 
+2nd bit -> set bits -> 7 %3   -> 1 at bit 2 single number ke bit is set. 
 
 ans+= 2^2
 ans=4.

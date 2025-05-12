@@ -47,15 +47,15 @@ vector<int> sortedArrayToBST(vector<int>& nums) {
 
 Java -:
 void helper(int []nums,int start,int end,ArrayList<Integer>list)
-    {
+{
         if(start>end) return;
         int mid=(start+end)/2;
         list.add(nums[mid]);
         
         helper(nums,start,mid-1,list);
         helper(nums,mid+1,end,list);
-    }
-    public int[] sortedArrayToBST(int[] nums)
+}
+public int[] sortedArrayToBST(int[] nums)
     {
        ArrayList<Integer>list=new ArrayList<>();
        int n=nums.length;

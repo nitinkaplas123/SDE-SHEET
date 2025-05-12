@@ -15,7 +15,8 @@ add whatever value we have.
 Time-> O(3^n*n) -> if the len is n then worst case we have whole string of * which means 3^n and at each string we are calling isValid.
      -> O(3^n*n)
 Code-:
-bool isValid(string &s) {
+bool isValid(string &s) 
+{
         int n=s.length();
         stack<char>st;
         for(int i=0;i<n;i++)
