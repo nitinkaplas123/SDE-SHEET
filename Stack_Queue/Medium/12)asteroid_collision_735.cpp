@@ -40,7 +40,6 @@ Case2-: -ve element
 Code-:
 vector<int> asteroidCollision(vector<int>& asteroids) {
         int n=asteroids.size();
-        vector<int>v;
         stack<int>st;
 
         for(int i=0;i<n;i++)
@@ -49,26 +48,29 @@ vector<int> asteroidCollision(vector<int>& asteroids) {
             st.push(asteroids[i]);
             else
             {
+                // stack element less than current element 
                 while(!st.empty() and st.top()>0 and st.top()<abs(asteroids[i]))
                 {
                     st.pop();
                 }
-                //equal 
-                if(!st.empty() and st.top()==abs(asteroids[i]))
+                
+                // both equal 
+                if(!st.empty() and st.top()== abs(asteroids[i]))
                 st.pop();
                 else
                 {
-                    if(st.empty() || st.top()<0)
+                    if(st.empty() || st.top()<0 )
                     st.push(asteroids[i]);
                 }
             }
         }
 
+        vector<int>ans;
         while(!st.empty())
         {
-            v.push_back(st.top());
+            ans.push_back(st.top());
             st.pop();
         }
-        reverse(v.begin(),v.end());
-        return v;
-}
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }

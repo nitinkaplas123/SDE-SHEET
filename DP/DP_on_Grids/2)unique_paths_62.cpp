@@ -13,7 +13,6 @@ int helper(int row,int col,int m,int n)
 int uniquePaths(int m, int n) {
         int i=0;
         int j=0;
-        int memo[101][101];
         return helper(i,j,m,n);
 }
 

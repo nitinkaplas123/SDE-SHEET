@@ -12,6 +12,7 @@
         "__bit_reference": "cpp",
         "bitset": "cpp",
         "unordered_map": "cpp",
-        "__locale": "cpp"
+        "__locale": "cpp",
+        "__hash_table": "cpp"
     }
 }

@@ -25,12 +25,12 @@ bool isValid(string s)
            //closing charcter
            else 
            {
-            if(st.empty()==true)
-            return 0;
-            else if((st.top()=='(' and ch==')') || (st.top()=='{' and ch=='}')|| (st.top()=='[' and ch==']'))
-            st.pop();
-            else
-            return 0;
+               if(st.empty()==true)
+               return 0;
+               else if((st.top()=='(' and ch==')') || (st.top()=='{' and ch=='}')|| (st.top()=='[' and ch==']'))
+               st.pop();
+               else
+               return 0;
            }
         }
         return (st.empty()==true);

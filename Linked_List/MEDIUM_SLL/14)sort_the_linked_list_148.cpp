@@ -31,4 +31,60 @@ ListNode* sortList(ListNode* head) {
 
 Solution 2-: Using merge Sort.
 
-Pending.
+
+Time Complexity: O(Nlog(N))
+Space Complexity: O(log(N))
+
+
+Code:
+ListNode* middle(ListNode* head)
+{
+    ListNode* prev=NULL;
+    ListNode* slow=head;
+    ListNode* fast=head;
+
+    while(fast!=NULL and fast->next!=NULL)
+    {
+        prev=slow;
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    return prev;
+}
+
+ListNode* mergeTwoLinkedList(ListNode* head1,ListNode* head2)
+{
+    if(head1==NULL) return head2;
+    if(head2==NULL) return head1;
+
+    if(head1->val<head2->val)
+    {
+        head1->next=mergeTwoLinkedList(head1->next,head2);
+        return head1;
+    }
+    else
+    {
+        head2->next=mergeTwoLinkedList(head1,head2->next);
+        return head2;
+    }
+}
+
+ListNode* sortList(ListNode* head) {
+    if(head==NULL || head->next==NULL) return head;
+
+    ListNode* mid=middle(head);
+
+    ListNode* left=head;
+    ListNode* right=mid->next;
+    
+    mid->next=NULL;
+
+    left=sortList(left);
+    right=sortList(right);
+
+    return mergeTwoLinkedList(left,right);
+}
+
+
+
+

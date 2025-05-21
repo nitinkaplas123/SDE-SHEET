@@ -36,3 +36,27 @@ ListNode* oddEvenList(ListNode* head)
        even->next=NULL;
        return odd_head;
 }
+
+
+
+Solution 2:
+
+Code:
+
+ListNode* oddEvenList(ListNode* head) {
+    if (!head || !head->next) return head;
+
+    ListNode* odd = head;
+    ListNode* even = head->next;
+    ListNode* evenHead = even;
+
+    while (even && even->next) {
+        odd->next = even->next;
+        odd = odd->next;
+        even->next = odd->next;
+        even = even->next;
+    }
+
+    odd->next = evenHead;
+    return head;
+}

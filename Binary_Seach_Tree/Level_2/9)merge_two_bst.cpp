@@ -1,6 +1,3 @@
-https://www.geeksforgeeks.org/problems/merge-two-bst-s/1
-
-
 Solution 1-:
 Steps-:
 1) make a vector v and storing the inorder traversal of both bst in it.

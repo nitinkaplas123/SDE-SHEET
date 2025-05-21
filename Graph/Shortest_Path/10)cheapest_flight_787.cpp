@@ -201,3 +201,24 @@ Code-:
          }
          return (dist[dst]==INT_MAX)?-1:dist[dst];
 }
+
+
+Below testcase why we take cost+  not dist[node]+ 
+
+Input
+n =
+4
+flights =
+[[0,1,1],[0,2,5],[1,2,1],[2,3,1]]
+src =
+0
+dst =
+3
+k =
+1
+
+Use Testcase
+Output
+3
+Expected
+6

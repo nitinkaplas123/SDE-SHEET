@@ -37,6 +37,11 @@ Adjacency List: O(E) to store the edges.
 Color Map: O(v) to store the color of each vertex.
 Recursive Stack: In the worst case, the depth of recursion is O(v).
 
+
+Time Complexity : O(M^v * v)   -> *v is for isSafe function where v is the max no. of adjacent nodes any vertex will have.
+Auxiliary Space: O(V + E)   -> for making adjacency list.
+
+
 Code-:
 bool isSafe(int node,int number,vector<int>adj[],unordered_map<int,int>&color)
 {
@@ -78,3 +83,5 @@ bool graphColoring(int v, vector<pair<int, int>>& edges, int m) {
         unordered_map<int,int>color(v);
         return helper(0,v,m,adj,color);
 }
+
+
